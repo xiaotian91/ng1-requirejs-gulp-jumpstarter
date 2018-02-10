@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+    <h1>你好</h1>
+    <p>这是一个结合Angular 1.0 + Gulp + RequireJs + Bootstrap 3.0的种子项目。</p>
+    <p ng-hide="loggedIn"><a class="btn btn-primary btn-lg" href="#/login" role="button">登录 &raquo;</a></p>
+    <p class="text-success" ng-show="loggedIn">
+        欢迎，{{profile.name||profile.email}}，您已经成功登录！<br>
+        <a class="btn" href="#/login" >登录模块 &raquo;</a>
+        <a class="btn" href="#/utilsDemo">Utils方法实例 &raquo;</a>
+        <a class="btn" href="#/inputsDemo">Inputs组件实例 &raquo;</a>
+        <a class="btn" href="#/dataService">接口 &raquo;</a>
+    </p>
+    <button class="btn" ng-click="openT()">打开一个Bootstrap弹出框</button>
+</div>

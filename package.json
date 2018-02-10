@@ -1,0 +1,37 @@
+{
+  "name": "Angular-Gulp-RequireJs-Proj-Seed",
+  "version": "1.0.0",
+  "description": "A quick jumpstarter of angualr 1.0, gulp, and requirejs",
+  "scripts": {
+    "mockserver": "puer -p 6090 -a _mockserver.js",
+    "dev": "gulp --env development",
+    "build": "gulp --env production",
+    "clean": "gulp clean"
+  },
+  "author": "Xiaotian",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-asset-rev": "0.0.15",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssimport": "^6.0.0",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.3.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-ng-html2js": "^0.2.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.1.1",
+    "minimist": "^1.2.0",
+    "puer-mock": "^1.2.0",
+    "requirejs": "^2.1.22",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "jquery": "^1.10.2",
+    "lodash": "^4.17.4"
+  }
+}

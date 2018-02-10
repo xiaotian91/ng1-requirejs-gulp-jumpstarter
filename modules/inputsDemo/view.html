@@ -1,0 +1,43 @@
+<div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            jquery.datetimepicker插件<a href="http://xdsoft.net/jqplugins/datetimepicker/">jquery.datetimepicker</a>
+            jquery.datepick插件<a href="http://keith-wood.name/">jquery.datepick</a>
+        </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2" style="margin-top:20px">
+        <div class="col-md-6">
+            <h2>Angular Directive Adapter(使用jquery.datetimepicker)</h2>
+
+            <datetimepicker timepicker-id="timepicker" ng-model="time2" jq-plugin="datetimepicker" plugin-settings="{'format': 'Y/m/d h:i', 'allowBlank': true, 'callbacks': {'onClose': 'onClose', 'onShow': 'onShow'}, 'methods': ['destroy']}" class="form-control"></datetimepicker>
+
+            <pre style="margin-top:20px">&lt;datetimepicker dateID="timepicker"
+	ng-model="time2" format="Y/m/d h:i"&gt;&lt;/datetimepicker&gt;
+	        </pre>
+        </div>
+
+        <div class="col-md-6">
+            <h3 style="margin:80px 0 0 50px;">ngBind : {{time2}}</h3>
+        </div>
+    </div>
+
+    <!--div class="col-md-8 col-md-offset-2" style="margin-top:20px">
+        <div class="col-md-6">
+            <h2>Angular Directive Adapter(使用jquery.datepick)</h2>
+
+            <datetimepicker timepicker-id="timepicker2" ng-model="time3" jq-plugin="datepick" plugin-settings="{'minDate': 'new Date()', 'callbacks': {'onClose': 'onClose'}}" class="form-control"></datetimepicker>
+
+            <pre style="margin-top:20px">&lt;datetimepicker dateID="timepicker"
+	ng-model="time2" format="Y/m/d h:i"&gt;&lt;/datetimepicker&gt;
+	        </pre>
+        </div>
+
+        <div class="col-md-6">
+            <h3 style="margin:80px 0 0 50px;">ngBind : {{time3}}</h3>
+        </div>
+    </div-->
+    <!--div class="col-md-8 col-md-offset-2" style="margin-top:20px">
+        <countdowntimer until="120"></countdowntimer>
+    </div-->
+
+</div>

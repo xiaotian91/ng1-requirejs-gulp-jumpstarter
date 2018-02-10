@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>敏感词隐藏</h2>
+    <pre>stringsUtils.setUsernamePrivacy([string=''], [options={}])</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[string=''] (string): The string to handle.</li>
+        <li>[options.maxLength=5] (number): The maximum string length.</li>
+        <li>[options.omission='*'] (string): The string to indicate text is omitted.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: {{string1}}</span>
+        <span>输出: {{setUsernamePrivacy(string1)}}</span>
+    </p>
+    <hr>
+    <h2>字符串转数组</h2>
+    <pre>stringsUtils.splitToArray([string=''], [separator])</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[string=''] (string): The string to handle.</li>
+        <li>[separator] (string): The separator to split input string into an array.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: {{string2}}</span>
+        <span>输出: {{splitToArray(string2)}}</span>
+    </p>
+    <hr>
+    <h2>千位分隔符</h2>
+    <pre>&lt;input ng-model="a" xo-input-currency fraction-size="2" placeholder="输入金额" /&gt;</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[fraction-size=''] (string): The round-ups.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: 1000</span>
+        <span>输出: 1,000</span>
+    </p>
+    <input ng-model="a" xo-input-currency fraction-size="2" placeholder="输入金额" />{{a}}
+</div>
