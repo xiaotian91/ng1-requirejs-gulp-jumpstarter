@@ -17,6 +17,7 @@ var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var del = require('del');
 var browserSync = require('browser-sync').create();
+var mock = require('./mock');
 var cssSrc = './dist/styles/index.css';
 var jsSrc = './dist/*.js';
 
@@ -147,15 +148,16 @@ gulp.task('clean', function() {
 });
 
 gulp.task('watch', function() {
-    var paths = {
-        tpls: ['modules/**/*.html', 'components/**/*.html']
-    };
+    var src = ['*.js', 'modules/**/*.js', 'modules/*.js', 'modules/**/*.html', 'components/**/*.html'];
     browserSync.init({
         server: {
-            baseDir: './'
+            baseDir: './',
+            index: 'index-dev.html',
+            port: 3000,
+            middleware: mock.data()
         }
     })
-    var watcher = gulp.watch(paths.tpls, {cwd: './'}, ['clean', 'template']);
+    var watcher = gulp.watch(src, {cwd: './'}, ['clean', 'template']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         browserSync.reload();

@@ -8,6 +8,6 @@ define([],function(){
       .constant('loginRedirectPath', '/login')
 
       // where to connect to the api resources
-      .constant('$apiPath', 'http://localhost:6090')
+      .constant('$apiPath', 'http://localhost:3000')
 
 });

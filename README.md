@@ -1,4 +1,4 @@
-##介绍
+## 介绍
 
 种子项目, 为单页面应用设计, 整合了Angular 1和RequireJS以及一些常用的JS库, 另外用Gulp压缩打包, 模块化开发模式.
 
@@ -13,22 +13,34 @@
 	+ **view.html**，负责界面展示
 	
 	
-2. `/components`放置公用的Angular指令,服务，方法等等.
+2. `/components`放置公用的Angular指令,服务，方法等等.这些模块不仅可以在Angular的生态里工作，同时也可以独立出来作为普通的JS方法
+
+3. `/plugins`放置第三方插件，主要是一些非官方的插件
 
 
+## 开始
 
-##技术栈
----
+node, npm, gulp 是必须要安装的
+
+		npm install
+		bower install
+		
+		npm run dev //开发环境
+		npm run build //打包
+		npm run clean //清理
+		
+## 主要技术栈
+
 - RequireJS(AMD模块加载器)
 - AngularJS(前端MVC框架)
 - jQuery(DOM操作)
 - lodash(函数式编程加强)
-- sass(样式)
-- Puer ＋ Mock（前后端分离开发, 模拟后台接口）
+- sass + bootstrap 3(样式)
+- Browsersync ＋ Mock（前后端分离开发, 模拟后台接口）
 
 
 ## 环境搭建
----
+
 
 ###### 安装node环境与npm管理工具
 
@@ -52,22 +64,11 @@
 
 + **坑三:** npm下标不停的闪 删除C:\Users\Administrator\下的npmrc文件
 
-######安装puer和puer-mock
-1. `npm install -g puer`, 
-2. 然后打开cmd或terminal，进入项目目录，输入`npm install puer-mock --save-dev` 安装puer-mock
-3. 将examples文件下的三个文件`_mockserver.js, _mockserver.json, _apidoc.html`放到项目根目录下，
-4. 然后输入`puer -a _mockserver.js`自动打开本地server
-5. http://localhost:8000/_apidoc.html 可打开api接口文档
 
-[github地址](https://github.com/ufologist/puer-mock)
-
-[为什么需要一个mock-server](https://github.com/ufologist/puer-mock/blob/master/why-your-need-a-mock-server.md)
-
-[前后端接口规范](https://github.com/f2e-journey/treasure/blob/master/api.md)
-
-
-##SASS
+## 样式
 ---
+
+使用SASS进行管理，方便制作皮肤
 
 **基础类库:** sassCore <a href="http://www.w3cplus.com/sasscore/index.html">查看文档</a>
 
@@ -89,22 +90,22 @@
 
 **结构:**
 
-项目初期可采用**一个模块对应一个scss**，如：_login.scss, 再加一个项目用的变量文件定义字体、颜色（覆盖sass-core中的设置).
+采用**一个模块/页面对应一个scss**，如：_login.scss, 再加一个项目用的变量文件定义字体、颜色（覆盖sass-core中的设置).
 
-##JS打包
----
+## JS打包
+
 采用gulp + r.js
 
 命令行 `npm run build`
 
-这一步会自动生成一个build-main.js并且放置在dist文件夹作为最终部署发布的版本
+这一步会自动生成一个dist文件夹作为最终部署发布的版本
 
 [采坑大全](http://www.jb51.net/article/77771.htm)
 
 Linux 删除文件夹下的 .DS_Store find ./ -name "*.DS_Store" -print -exec rm -fr {} \;
 
-##补丁
----
+## 补丁
+
 
 请用patch里的模块替换掉node_modules里相同的模块的index.js
 

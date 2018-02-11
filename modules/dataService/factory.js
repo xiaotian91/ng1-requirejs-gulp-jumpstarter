@@ -41,7 +41,7 @@ define(['./app'], function(app) {
 
 
         function test(params) {
-            return _sendGetRequest('/api/page/index', params);
+            return _sendGetRequest('/employees/getAll', params);
         };
 
         return {

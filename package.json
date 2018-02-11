@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "jquery": "^1.10.2",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mockjs": "^1.0.1-beta3"
   }
 }
