@@ -1,0 +1,73 @@
+﻿<div class="ap-main-container" ng-mouseenter="showProgressTimes=true" ng-mouseleave="showProgressTimes=false">
+
+	<div class="cover" ng-show="!hideCover">
+		<img src="../../plugin/third-party/angular-h5audioplayer/sample.png" alt="">
+	</div>
+
+
+	
+	<div class="ap-progress-container" ng-show="!hideProgressBar">
+		<div class="ap-progress-draggable"></div>
+
+		<span class="ap-progress-time-container badge" ng-class="{ 'ap-transparent': !showProgressTimes }">
+			{{currentTimeFormatted}}
+		</span>
+
+		<span class="ap-progress-duration-container badge" ng-class="{ 'ap-transparent': !showProgressTimes }">
+			{{durationFormatted}}
+		</span>
+
+		<div class="ap-progress-bar-background" ng-click="onProgressBarClick($event)">
+			<div class="ap-progress-bar" role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+	</div>
+
+	<!-- previous track -->
+	<div class="ap-button-container" ng-show="!hideSkipPrevious">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onSkipPreviousClick()">
+			<span class="glyphicon glyphicon-step-backward"></span>
+		</button>
+	</div>
+	<!-- / previous track -->
+	<div class="ap-button-container" ng-show="!hideRewind">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onRewindClick()">
+			<span class="glyphicon glyphicon-backward"></span>
+		</button>
+	</div>
+	<div class="ap-button-container" ng-show="!hideStop">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onStopClick()">
+			<span class="glyphicon glyphicon-stop"></span>
+		</button>
+	</div>
+	<div class="ap-button-container">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onPlayPauseClick()">
+			<span ng-class="{ 'glyphicon glyphicon-pause': isPlaying, 'glyphicon glyphicon-play': !isPlaying }"></span>
+		</button>
+	</div>
+	<div class="ap-button-container" ng-show="!hideFastForward">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onFastForwardClick()">
+			<span class="glyphicon glyphicon-forward"></span>
+		</button>
+	</div>
+	<div class="ap-button-container" ng-show="!hideSkipNext">
+		<button type="button" class="btn btn-default btn-sm" ng-click="onSkipNextClick()">
+			<span class="glyphicon glyphicon-step-forward"></span>
+		</button>
+	</div>
+
+	<audio-volume-control ng-show="!hideVolume"></audio-volume-control>
+
+	<div class="ap-text-container" ng-show="!hideDescription && description != null">
+		{{description}}
+	</div>
+
+	<div info="{{info.title}}">{{info.title}}</div>
+	
+	<!-- <div class="audio-player-source" ng-click="setPlaylistIndex(0)">
+		Jingle Punks - The Simplest.mp3
+	</div>
+	<div class="audio-player-source" ng-click="setPlaylistIndex(1)">
+		Jay Chou - 黑色幽默.mp3
+	</div> -->
+
+</div>

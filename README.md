@@ -102,3 +102,13 @@
 [采坑大全](http://www.jb51.net/article/77771.htm)
 
 Linux 删除文件夹下的 .DS_Store find ./ -name "*.DS_Store" -print -exec rm -fr {} \;
+
+##补丁
+---
+
+请用patch里的模块替换掉node_modules里相同的模块的index.js
+
+##BUG
+---
+
+Windows环境下可能会遇到权限问题，需要给cmd.exe‘Run As Adminitrator’

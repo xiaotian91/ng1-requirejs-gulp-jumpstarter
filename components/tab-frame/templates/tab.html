@@ -1,0 +1,4 @@
+<li ng-click="select($event,'nav')" ng-class='{active : selected && !isChild,childActive : selected && isChild, isChild : isChild }' style='cursor:pointer;'> 
+	<span class='zhx-icon-font icon-right' ng-if='!isChild'></span>
+	{{ title }}
+</li>

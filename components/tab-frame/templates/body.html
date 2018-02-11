@@ -1,0 +1,26 @@
+<div id="zhx-tabset-wrap">
+	<div id="zhx-tabset-navigation" ng-style="{ width : navigationWidth,minWidth : navigationWidth }" class="layui-bg-black"> 		
+		<div class="user-photo">
+			<a class="img" title="我的头像" ><img src="images/face.jpg"></a>
+			<p>你好！<span class="userName">请叫我马哥</span>, 欢迎登录</p>
+		</div>
+		<div id="nav-wrapper" ng-style="{ left : navOffsetLeft }"> 
+			<ul ng-repeat="n in tabsNav" ng-style="{ width: navigationWidth }" > 
+				<tabf ng-repeat="t in n" title="t[dateFormat.name]" tpl-module="t[dateFormat.moduleName]" tpl-url="t[dateFormat.template]" children="t[dateFormat.children]" father="$id"></tabf>
+			</ul> 
+		</div>
+	</div>
+	<div id="zhx-tabset-content" class="layui-body">
+		<div id="zhx-tabset-content-tabs" ng-show="isCreatedTabs.length">
+			<toogle-tip class="zhx-icon-font icon-pullleft" ng-style="{ width : toggleTipWidth }" id="toogleLeft" ng-if="hasToogleLeft" ng-click="scrollTabs('left')"></toogle-tip>
+			
+			<ul ng-style="{ left: scrollLeft }" ng-class="{ toogleLeftShow:hasToogleLeft }"></ul>
+			
+			<toogle-tip class="zhx-icon-font icon-pullright" ng-style="{ width : toggleTipWidth }" id="toogleRight" ng-if="hasToogleRight" ng-click="scrollTabs('right')"></toogle-tip>
+		</div>
+		<div id="zhx-tabset-content-main"></div>
+		<div class="layui-footer footer">
+			<p>copyright @2017 请叫我马哥 更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,150 @@
+﻿audio-player-control, audio-volume-control {
+	display: block;
+}
+
+.ap-main-container {
+	position: relative;
+	min-height: 60px;
+	min-width: 375px;
+	width: 420px; 
+	height:495px;
+	background: url('bg.jpg');
+	background-color: #b1b1b1;
+	padding: 15px;
+	border-radius: 6px;
+	text-align: left;
+	color: white;
+}
+
+.ap-main-container > .cover {
+	position: absolute; top: 180px; left: 50%; margin-left:-125px; width: 270px;height: 270px; overflow: hidden;
+}
+.ap-main-container > .cover img {
+	width: 250px; height: 250px; border:10px solid #cbe3db; border-radius:50%;
+}
+
+.ap-button-container {
+	float: left;
+	padding-right: 6px;
+	padding-top: 10px;
+}
+
+.ap-button-container > button {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.ap-volume-container {
+	float: right;
+	width: 150px;
+	background: #d3d3d3;
+	padding-right: 10px;
+	margin-top: 10px;
+	border-radius: 3px;
+}
+
+.ap-volume-container > .ap-button-container {
+	padding-top: 0;
+}
+
+.ap-volume-slider-container {
+	position: relative;
+	float: right;
+}
+
+.ap-volume-slider-background {
+	margin-top: 13px;
+	height: 3px;
+	width: 100px;
+	background-color: white;
+	cursor: pointer;
+	border-radius: 1px;
+}
+
+.ap-volume-slider {
+	margin-top: 13px;
+	width: 50px;
+	height: 3px;
+	background-color: #000000;
+	cursor: pointer;
+	border-top-left-radius: 1px;
+	border-bottom-left-radius: 1px;
+}
+
+.ap-volume-slider-draggable {
+	left: 49px;
+	margin-top: 10px;
+	position: absolute;
+	cursor: pointer;
+    background: #000000;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.ap-progress-container {
+	position: relative;
+	padding-top: 14px;
+}
+
+.ap-progress-bar-background {
+	margin-top: 6px;
+	background-color: white;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.ap-progress-bar {
+	width: 0px;
+	height: 6px;
+	background-color: #4EA3D6;
+	cursor: pointer;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+}
+
+.ap-progress-draggable {
+	position: absolute;
+	margin-top: 3px;
+	cursor: pointer;
+    background: #4EA3D6;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.ap-progress-time-container {
+	background-color: #4EA3D6;
+	left: 0;
+}
+
+.ap-progress-duration-container {
+	background-color: white;
+	color: #424242;
+	right: 0;
+}
+
+.ap-progress-duration-container, .ap-progress-time-container {
+	position: absolute;
+	height: 18px;
+	min-width: 35px;
+	transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   pointer-events:none;
+}
+
+.ap-text-container {
+	padding-top: 15px;
+	overflow: hidden;
+}
+
+.ap-transparent {
+	opacity: 0;
+}
+
+.ap-highlight {
+	color: #4EA3D6;
+}

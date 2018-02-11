@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "A quick jumpstarter of angualr 1.0, gulp, and requirejs",
   "scripts": {
-    "mockserver": "puer -p 6090 -a _mockserver.js",
     "dev": "gulp --env development",
     "build": "gulp --env production",
     "clean": "gulp clean"
   },
   "author": "Xiaotian",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "del": "^3.0.0",
     "gulp": "^3.9.0",
     "gulp-asset-rev": "0.0.15",
@@ -26,7 +26,6 @@
     "gulp-rev": "^8.0.0",
     "gulp-rev-collector": "^1.1.1",
     "minimist": "^1.2.0",
-    "puer-mock": "^1.2.0",
     "requirejs": "^2.1.22",
     "run-sequence": "^2.2.1"
   },

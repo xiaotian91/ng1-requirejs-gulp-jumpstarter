@@ -16,6 +16,7 @@ var minifyjs = require('gulp-minify');
 var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var del = require('del');
+var browserSync = require('browser-sync').create();
 var cssSrc = './dist/styles/index.css';
 var jsSrc = './dist/*.js';
 
@@ -149,9 +150,15 @@ gulp.task('watch', function() {
     var paths = {
         tpls: ['modules/**/*.html', 'components/**/*.html']
     };
+    browserSync.init({
+        server: {
+            baseDir: './'
+        }
+    })
     var watcher = gulp.watch(paths.tpls, {cwd: './'}, ['clean', 'template']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        browserSync.reload();
     });
 });
 
