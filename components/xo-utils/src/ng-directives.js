@@ -1,19 +1,16 @@
-'use strict';
 (function(root, module_name, factory) {
   if (typeof define === 'function' && define.amd) { // Angular-based AMD Support
-    define(['./functions/string'], factory);
+    define([], factory);
   } else { // Browser Support
     if (!root[module_name]) {
-      root[module_name] = factory(xoStrings);
+      root[module_name] = factory();
     }
   }
-}(this, 'xoUtils', function(StringsFactory) {
-  var app = angular.module('xo.utils', [])
-    .factory('stringsUtils', StringsFactory)
+}(this, 'xoDirectives', function() {
+  var app = angular.module('xo.directives', [])
     .directive('onFinishRender', onFinishRenderCtrl)
     .directive('mouseOverLeave', mouseOverLeaveCtrl)
-    .directive('xoInputCurrency', xoInputCurrencyCtrl)
-    .filter('to_trusted', trustAsHtmlFilter);
+    .directive('xoInputCurrency', xoInputCurrencyCtrl);
 
   function onFinishRenderCtrl($timeout) {
     return {
@@ -139,11 +136,5 @@
             }
         };
     }
-
-  function trustAsHtmlFilter($sce) {
-    return function(text) {
-      return $sce.trustAsHtml(text);
-    };
-  }
 
 }));

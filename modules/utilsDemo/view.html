@@ -1,6 +1,8 @@
 <div class="container">
-    <h2>敏感词隐藏</h2>
-    <pre>stringsUtils.setUsernamePrivacy([string=''], [options={}])</pre>
+    <h2>xoStrings方法</h2>
+    
+    <h4>敏感词隐藏</h4>
+    <pre>xoStrings.setUsernamePrivacy([string=''], [options={}])</pre>
     <h4>Arguments</h4>
     <ul>
         <li>[string=''] (string): The string to handle.</li>
@@ -13,8 +15,8 @@
         <span>输出: {{setUsernamePrivacy(string1)}}</span>
     </p>
     <hr>
-    <h2>字符串转数组</h2>
-    <pre>stringsUtils.splitToArray([string=''], [separator])</pre>
+    <h4>字符串转数组</h4>
+    <pre>xoStrings.splitToArray([string=''], [separator])</pre>
     <h4>Arguments</h4>
     <ul>
         <li>[string=''] (string): The string to handle.</li>
@@ -26,8 +28,55 @@
         <span>输出: {{splitToArray(string2)}}</span>
     </p>
     <hr>
-    <h2>千位分隔符</h2>
-    <pre>&lt;input ng-model="a" xo-input-currency fraction-size="2" placeholder="输入金额" /&gt;</pre>
+    <h4>从连续[]中取出字符串</h4>
+    <pre>xoStrings.getTxtFromContinousBrackets([string=''], [separator])</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[string=''] (string): The string to handle.</li>
+         <li>[separator] (string): The separator to show after handling.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: {{string3}}</span>
+        <span>输出: {{getTxtFromContinousBrackets(string3)}}</span>
+    </p>
+    <hr>
+    <h4>替换文件名后缀</h4>
+    <pre>xoStrings.convert2UrlFromSuffix([string=''], [suffix])</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[string=''] (string): The string to handle.</li>
+         <li>[suffix] (string): The suffix to change the original file extension.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: {{string4}}</span>
+        <span>输出: {{convert2UrlFromSuffix(string4)}}</span>
+    </p>
+    <hr>
+    <h4>从数组中获取随机元素</h4>
+    <pre>xoStrings.getRandomFrom([array=[]])</pre>
+    <h4>Arguments</h4>
+    <ul>
+        <li>[array=[]] (array): The array to handle.</li>
+    </ul>
+    <h4>Examples</h4>
+    <p>
+        <span>输入: {{arr1}}</span>
+        <span>输出: {{arr1Random}}</span>
+    </p>
+    <hr>
+    <h2>xoDates方法</h2>
+
+    <h4>获取当前季度开始月</h4>
+    <pre>xoDates.getQuarterStartMonth()</pre>
+    <h4>Examples</h4>
+    <p>
+        <span>输出: {{getQuarterStartMonth()}}</span>
+    </p>
+    <hr>
+    <h4>千位分隔符</h4>
+    <pre>&lt;input ng-model="currency" xo-input-currency fraction-size="2" placeholder="输入金额" /&gt;</pre>
     <h4>Arguments</h4>
     <ul>
         <li>[fraction-size=''] (string): The round-ups.</li>
@@ -37,5 +86,5 @@
         <span>输入: 1000</span>
         <span>输出: 1,000</span>
     </p>
-    <input ng-model="a" xo-input-currency fraction-size="2" placeholder="输入金额" />{{a}}
+    <input ng-model="currency" xo-input-currency fraction-size="2" placeholder="输入金额" />{{currency}}
 </div>

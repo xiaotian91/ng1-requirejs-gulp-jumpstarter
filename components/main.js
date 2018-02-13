@@ -4,7 +4,7 @@ define(
         "ngRoute",
         "ui-bootstrap",
         "angular-animate",
-        "./utils/index",
+        "./xo-utils/src/ng-index",
         "./angular-datetimepicker/index",
         "./uib-modal/index"
     ], function () {

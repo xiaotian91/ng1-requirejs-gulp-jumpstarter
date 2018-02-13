@@ -1,0 +1,16 @@
+{
+  "name": "xo-utils",
+  "version": "1.0.0",
+  "description": "A Group Of Useful Methods",
+  "scripts": {},
+  "author": "Xiaotian",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^2.1.0",
+    "gulp-order": "^1.1.1"
+  },
+  "dependencies": {}
+}

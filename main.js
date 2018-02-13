@@ -31,6 +31,7 @@ require([ // 加载模块
     'modules/login/main',
     'modules/utilsDemo/main',
     'modules/inputsDemo/main',
+    'modules/dataService/main',
     'template',
     'config'
 ],function(){
@@ -39,6 +40,7 @@ require([ // 加载模块
         "myApp.login",
         "myApp.utilsDemo",
         "myApp.inputsDemo",
+        "myApp.dataService",
         "template-app",
         "myApp.config"
     ]).run(['$rootScope', '$apiPath', function($rootScope, $apiPath) {

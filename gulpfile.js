@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var rjs = require('requirejs');
 var minimist = require('minimist');
 var gulpif = require('gulp-if');
-var rename = require('gulp-rename');
 var htmlreplace = require('gulp-html-replace');
 var concat = require('gulp-concat');
 var cssimport = require("gulp-cssimport");
@@ -18,8 +17,10 @@ var inject = require('gulp-inject');
 var del = require('del');
 var browserSync = require('browser-sync').create();
 var mock = require('./mock');
-var cssSrc = './dist/styles/index.css';
-var jsSrc = './dist/*.js';
+var config = require('./gulp-config');
+
+var cssSrc = './dist/styles/index.css'; // 打包生成的css文件
+var jsSrc = './dist/*.js'; // 打包生成的js文件
 
 var knownOptions = {
     string: 'env',
@@ -29,8 +30,6 @@ var knownOptions = {
 };
 var options = minimist(process.argv.slice(2), knownOptions);
 
-var devSrc = ['./plugins/**/*.css', './components/**/*.css']; // 开发时插入的css文件
-var deploySrc = ['./styles/index.css']; // 打包时需要的集合css文件
 
 //合并html模板命令--gulp template
 gulp.task('template', function() {
@@ -72,9 +71,9 @@ gulp.task('inject', function() {
     
     var sourcesIndex;
     if (options.env == 'production') {
-        sourcesIndex = gulp.src(deploySrc, {read: false});
+        sourcesIndex = gulp.src(config.deploySrc, {read: false});
     } else if (options.env == 'development') {
-        sourcesIndex = gulp.src(devSrc, {read: false});
+        sourcesIndex = gulp.src(config.devSrc, {read: false});
     }
     
     return gulp.src('./index.html')
@@ -136,7 +135,7 @@ gulp.task('js', function(type) {
 });
 
 gulp.task('css', function() {
-    return gulp.src('styles/*.css')
+    return gulp.src('./styles/index.css') // 只需要集合css文件
         .pipe(cssimport())
         .pipe(gulp.dest('dist/styles'));
 });
@@ -148,7 +147,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('watch', function() {
-    var src = ['*.js', 'modules/**/*.js', 'modules/*.js', 'modules/**/*.html', 'components/**/*.html'];
+    var src = config.watchFiles;
     browserSync.init({
         server: {
             baseDir: './',

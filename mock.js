@@ -12,7 +12,8 @@ exports.data = function() {
 				Random.integer();
 				Random.string('lower', 4);
 				var data = Mock.mock({
-					"list|5":[{
+					"route": "/employees/getAll",
+					"list|3":[{
                         'name':'@string()',
                         'id': '@integer(0,10)'
                     }]
