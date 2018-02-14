@@ -1,1 +1,1 @@
-define(['./ctrl','./config'], function () {});
+define(['./ctrl', './config'], function () {});

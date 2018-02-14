@@ -1,7 +1,9 @@
 define(['./app','routeConfig'],function(app,routeConfig){
     routeConfig.registerConfig(app);
-    app.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/home', {
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise("/home");
+        $stateProvider.state('home', {
+            url: '/home',
             templateUrl: 'home/view.html',
             controller: 'HomeCtrl',
             resolve: {
@@ -10,9 +12,6 @@ define(['./app','routeConfig'],function(app,routeConfig){
                 // in the controller, but this makes things cleaner (controller doesn't need to worry
                 // about auth status or timing of accessing data or displaying elements)
             }
-        });
-        $routeProvider.otherwise({
-            redirectTo: '/home'
         });
     }]);
 });

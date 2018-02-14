@@ -16,6 +16,7 @@
     "gulp-asset-rev": "0.0.15",
     "gulp-concat": "^2.6.1",
     "gulp-cssimport": "^6.0.0",
+    "gulp-gzip": "^1.4.2",
     "gulp-html-replace": "^1.6.2",
     "gulp-htmlmin": "^4.0.0",
     "gulp-if": "^2.0.2",

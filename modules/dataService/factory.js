@@ -44,8 +44,13 @@ define(['./app'], function(app) {
             return _sendGetRequest('/employees/getAll', params);
         };
 
+        function getXoMenus(params) {
+            return _sendGetRequest('/getXoMenus', params);
+        };
+
         return {
-            test: test
+            test: test,
+            getXoMenus: getXoMenus
         };
 
     }]);

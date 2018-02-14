@@ -1,7 +1,8 @@
 define(['./app','routeConfig'],function(app,routeConfig){
     routeConfig.registerConfig(app);
-    app.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/dataService', {
+    app.config(['$stateProvider', function ($stateProvider) {
+        $stateProvider.state('dataService', {
+            url: '/dataService',
             templateUrl: 'dataService/view.html',
             controller: 'DataServiceCtrl',
             resolve: {
@@ -10,9 +11,6 @@ define(['./app','routeConfig'],function(app,routeConfig){
                 // in the controller, but this makes things cleaner (controller doesn't need to worry
                 // about auth status or timing of accessing data or displaying elements)
             }
-        });
-        $routeProvider.otherwise({
-            redirectTo: '/home'
         });
     }]);
 });

@@ -5,11 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <style>
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
-    </style>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <!-- inject:index:css -->
     <link rel="stylesheet" href="plugins/jquery-datepick/jquery.datepick.css">
@@ -17,9 +12,10 @@
     <link rel="stylesheet" href="plugins/jquery-datetimepicker/jquery.datetimepicker.css">
     <!-- endinject -->
     <script src="https://cdn.bootcss.com/angular.js/1.6.0/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     <script data-main="main.js" src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
 </head>
-<body ng-cloak >
-    <div ng-view></div>
+<body>
+    <div ui-view></div>
 </body>
 </html>

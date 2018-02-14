@@ -14,6 +14,7 @@ var ngHtml2js = require('gulp-ng-html2js');
 var minifyjs = require('gulp-minify');
 var rename = require('gulp-rename');
 var inject = require('gulp-inject');
+var gzip = require('gulp-gzip');
 var del = require('del');
 var browserSync = require('browser-sync').create();
 var mock = require('./mock');
@@ -111,7 +112,7 @@ gulp.task('ngModules', function(cb) {
         mainConfigFile: "./main.js",
         name: 'main',
         uglify: {
-            mangle: false // 不混淆变量名, 否则打包后angualr会报错, 暂时没有更好的方案
+            mangle: false // 不混淆变量名, 否则打包后angular会报错, 暂时没有更好的方案
         },
         out: './tmp/ngModules.js'
     }, function(buildResponse) {
@@ -120,7 +121,7 @@ gulp.task('ngModules', function(cb) {
     }, cb);
 });
 
-gulp.task('js', function(type) {
+gulp.task('js', function() {
     return gulp.src('tmp/*.js')
         .pipe(concat('app.js'))
         .pipe(minifyjs({
@@ -128,9 +129,11 @@ gulp.task('js', function(type) {
                 src: '.js',
                 min: '.min.js'
             },
-            noSource: true,
+            noSource: false,
             mangle: false
         }))
+        .pipe(gulp.dest('dist'))
+        .pipe(gzip())
         .pipe(gulp.dest('dist'));
 });
 

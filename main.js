@@ -3,12 +3,10 @@
 require.config({
     baseUrl:'',
     paths: {
-        'ngRoute':'bower_components/angular-route/angular-route.min',
-        'domReady':'bower_components/domReady/domReady',
-        'text':'bower_components/text/text',
         'ui-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
         'angular-animate':'bower_components/angular-animate/angular-animate.min',
         'routeConfig':'components/routeConfig',
+
         'jquery': 'node_modules/jquery/dist/jquery',
         'jquery-plugin': 'plugins/jquery-datepick/jquery.plugin',
         'jquery-datetime-picker': 'plugins/jquery-datetimepicker/jquery.datetimepicker',
@@ -25,8 +23,7 @@ require.config({
     }
 });
 
-require([ // 加载模块
-    'domReady!',
+require([ // 加载所有模块的入口文件
     'modules/home/main',
     'modules/login/main',
     'modules/utilsDemo/main',
@@ -35,7 +32,7 @@ require([ // 加载模块
     'template',
     'config'
 ],function(){
-    angular.module("myApp", [
+    var app = angular.module("myApp", [
         "myApp.home",
         "myApp.login",
         "myApp.utilsDemo",

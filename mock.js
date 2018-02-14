@@ -21,6 +21,30 @@ exports.data = function() {
 				res.write(JSON.stringify(data));
 				res.end();
 			}
+		},
+		{
+			route: '/getXoMenus',
+			handle: function(req, res, next) {
+				res.writeHead(200, {
+					'Content-type': 'application/json;charset=UTF-8'
+				});
+				var data = [
+		            {
+		                name: 'xoStrings',
+		                url: 'utilsDemo.strings'
+		            },
+		            {
+		                name: 'xoDates',
+		                url: 'utilsDemo.dates'
+		            },
+		            {
+		                name: 'xoColors',
+		                url: 'utilsDemo.colors'
+		            }
+		        ];
+				res.write(JSON.stringify(data));
+				res.end();
+			}
 		}
 	]
 }
