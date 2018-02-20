@@ -16,6 +16,8 @@ var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var gzip = require('gulp-gzip');
 var del = require('del');
+var sass = require('gulp-ruby-sass');
+var filter = require('gulp-filter');
 var browserSync = require('browser-sync').create();
 var mock = require('./mock');
 var config = require('./gulp-config');
@@ -144,12 +146,12 @@ gulp.task('css', function() {
 });
 
 gulp.task('clean', function() {
-    del(['tmp', 'dist', 'rev'], function(paths) {
+    del(config.cleanFiles, function(paths) {
         console.log('Deleted files and folders:\n', paths.join('\n'));
     })
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['sass'], function() {
     var src = config.watchFiles;
     browserSync.init({
         server: {
@@ -158,12 +160,21 @@ gulp.task('watch', function() {
             port: 3000,
             middleware: mock.data()
         }
-    })
+    });
     var watcher = gulp.watch(src, {cwd: './'}, ['clean', 'template']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         browserSync.reload();
     });
+
+    gulp.watch('./styles/sass/*.scss', ['sass']);
+});
+
+gulp.task('sass', function() {
+    return sass(['./styles/sass/**/*.scss'], {sourcemap: true})
+        .pipe(gulp.dest('./styles/css'))
+        .pipe(filter('./styles/**/*.css'))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 //开发构建

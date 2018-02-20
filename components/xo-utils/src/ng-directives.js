@@ -10,7 +10,8 @@
   var app = angular.module('xo.directives', [])
     .directive('onFinishRender', onFinishRenderCtrl)
     .directive('mouseOverLeave', mouseOverLeaveCtrl)
-    .directive('xoInputCurrency', xoInputCurrencyCtrl);
+    .directive('xoInputCurrency', xoInputCurrencyCtrl)
+    .directive('xoInput', xoInputCtrl);
 
   function onFinishRenderCtrl($timeout) {
     return {
@@ -137,4 +138,19 @@
         };
     }
 
+    function xoInputCtrl() {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function(scope, element, attrs) {
+                element.on('input', oninput);
+                scope.$on('$destroy', function() {
+                    element.off('input', oninput);
+                });
+                function oninput(event) {
+                    scope.$evalAsync(attrs['xoInput'],{$event:event,$value:this.value});
+                };
+            }
+        }
+    }
 }));

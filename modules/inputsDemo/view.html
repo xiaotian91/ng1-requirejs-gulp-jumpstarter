@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-8 col-md-offset-2" style="margin-top:20px">
         <div class="col-md-6">
-            <h2>Angular Directive Adapter(使用jquery.datetimepicker)</h2>
+            <h4>Angular Directive Adapter(使用jquery.datetimepicker)</h4>
 
             <datetimepicker timepicker-id="timepicker" ng-model="time2" jq-plugin="datetimepicker" plugin-settings="{'format': 'Y/m/d h:i', 'allowBlank': true, 'callbacks': {'onClose': 'onClose', 'onShow': 'onShow'}, 'methods': ['destroy']}" class="form-control"></datetimepicker>
 
@@ -17,13 +17,13 @@
         </div>
 
         <div class="col-md-6">
-            <h3 style="margin:80px 0 0 50px;">ngBind : {{time2}}</h3>
+            <h4 style="margin:80px 0 0 50px;">ngBind : {{time2}}</h4>
         </div>
     </div>
 
     <div class="col-md-8 col-md-offset-2" style="margin-top:20px">
         <div class="col-md-6">
-            <h2>Angular Directive Adapter(使用jquery.datepick)</h2>
+            <h4>Angular Directive Adapter(使用jquery.datepick)</h4>
 
             <datetimepicker timepicker-id="timepicker2" ng-model="time3" jq-plugin="datepick" plugin-settings="{'minDate': 'new Date()', 'callbacks': {'onClose': 'onClose'}}" class="form-control"></datetimepicker>
 
@@ -33,10 +33,21 @@
         </div>
 
         <div class="col-md-6">
-            <h3 style="margin:80px 0 0 50px;">ngBind : {{time3}}</h3>
+            <h4 style="margin:80px 0 0 50px;">ngBind : {{time3}}</h4>
         </div>
     </div>
     <!--div class="col-md-8 col-md-offset-2" style="margin-top:20px">
         <countdowntimer until="120"></countdowntimer>
     </div-->
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">        
+            <h4>Input实时获取值后传递给函数</h4>
+            <input name="cardNo" ng-model="formData.cardNo" xo-input="onCardNoIn($value)">{{formData.cardNo}}
+            <pre>
+                &lt;input name="cardNo" ng-model="formData.cardNo" xo-input="onCardNoIn($value)"&gt; 打开控制台可以看到值已经实时获取到了
+            </pre>
+        </div>
+    </div>
+
 </div>

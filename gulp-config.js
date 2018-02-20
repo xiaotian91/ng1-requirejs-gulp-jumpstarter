@@ -15,6 +15,7 @@ module.exports = (function() {
 			'components/**/*.js',
 			'components/*.js',
 			'components/**/*.html'
-		]
+		],
+		cleanFiles: ['tmp', 'dist', 'rev', 'styles/css', '.sass-cache', 'npm-debug.log']
 	};
 }());

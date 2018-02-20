@@ -7,5 +7,13 @@ define(['./app'], function(app) {
             console.log(err);
         });
 
+        $scope.sendMockReq = function(id) {
+	        DataService.testDel({id: id}).then(function(res){
+	            $scope.data2 = res.data;
+	        }, function(err) {  
+	            console.log(err);
+	        });
+        };
+
     }]);
 });

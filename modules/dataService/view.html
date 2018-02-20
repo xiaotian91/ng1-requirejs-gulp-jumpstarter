@@ -1,6 +1,13 @@
 <div class="jumbotron text-center">
     <div>当前的API地址为：{{ $apiPath }} </div> 
     <p>接口测试页面</p>
-    <div>测试接口返回值{{ data1 }}</div>
-    <div>你的接口</div>
+
+    <div>接口一</div>
+    <div>接口一返回值{{ data1 }}</div>
+    
+    <div>接口二</div>
+    <input type="text" placeholder="输入数字" ng-model="formdata.id">
+    <button ng-click="sendMockReq(formdata.id)">发送请求</button>
+    <div>接口二返回值{{ data2 }}</div>
+
 </div>
