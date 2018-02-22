@@ -1,0 +1,290 @@
+//
+// Typography
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 提供文字排版相关功能
+// 包含的mixin/function从上到下有:
+// 
+// ellipsis, force-wrap, hide-text, invisible, hover-link, unstyled-link, drop-cap(未添加), drop-cap-inline(未添加)
+// font-family, emCalc pxToem, remCalc pxTorem
+
+// 依赖于 variables, util
+@import "./variables";
+@import "./util";
+
+//
+// ellipsis
+//
+// Known issue:
+// 指定参数（行数）的功能只支持WebKit。
+
+%ellipsis-basic {
+	overflow: hidden;
+	@include prefixer(text-overflow, ellipsis, o);
+	white-space: nowrap;
+}
+
+@mixin ellipsis($line-number) { // 限制超出指定行数截断的功能只在 WebKit 内核浏览器下有效
+	@extend %ellipsis-basic;
+	//display: -webkit-box;
+	//-webkit-line-clamp: $line-number;
+	//-webkit-box-orient: vertical;
+}
+
+//
+// force-wrap
+//
+// 阻止长字符串（例如url或无意义连续英文字符）打破布局
+
+@mixin force-wrap() {
+    white-space: pre;           // CSS 2.0
+    white-space: pre-wrap;      // CSS 2.1
+    white-space: pre-line;      // CSS 3.0
+    white-space: -pre-wrap;     // Opera 4-6
+    white-space: -o-pre-wrap;   // Opera 7
+    white-space: -moz-pre-wrap; // Mozilla
+    white-space: -hp-pre-wrap;  // HP Printers
+    word-wrap: break-word;      // IE 5+
+}
+
+
+//
+// hide-text
+//
+// 用于隐藏元素内文字，一般在文字隐藏之后使用背景图片替代显示。如果使用此 mixin 的元素是 inline-
+// block 元素，请确保为其设置宽度。
+
+@mixin hide-text($extend:true) {
+	
+	@if $extend {
+		@extend %hide-text;
+	} @else {
+		white-space: nowrap;
+		text-indent: 100%;
+		overflow: hidden;
+		@if $support-ie-version < 8 {
+			text-indent: -9999px;
+			overflow: hidden;
+			text-align: left;
+		} 
+	}
+}
+
+%hide-text {
+	@include hide-text(false);
+	
+}
+
+
+//
+// invisible
+//
+// 用于隐藏那些增加可访问性的文字，注意与hide-text的区别是，他隐藏整个元素
+
+@mixin invisible() {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    @if $support-ie-version < 8 {
+    	*clip: rect(1px, 1px, 1px, 1px);
+    }
+}
+
+//
+// hover-link
+//
+// 实现链接默认无下划线，hover后有下划线的样式
+@mixin hover-link() {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+//
+// unstyled-link
+//
+// 将链接变成默认的文字样式
+@mixin unstyled-link() {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+    &:active, &:focus {
+        outline: none;
+    }
+}
+
+// ----------------------------------------------------- //
+
+//
+// font-family
+// 调用预设样式设定文字的字体族
+
+@mixin font-family($type) {
+	@if $type == base {
+		font-family:  $default-base-font-family;
+	}
+	@if $type == heading {
+		font-family:  $default-heading-font-family;
+	}
+	@if $type == code {
+		font-family: $default-code-font-family;
+
+	}
+}
+
+// ----------------------------------------------------- //
+
+//
+// font-dpr
+// 移动端适配不同dpr字号大小
+
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+
+}
+
+//
+// emCalc, pxToem
+//
+// pxToem换算的mixin和function
+// http://www.w3cplus.com/preprocessor/sass-px-to-em-with-mixin-and-function.html
+
+@mixin emCalc($props, $sizes, $base: $default-font-size) {
+	$values: ();
+	$sublists: false;
+
+	@each $s in $sizes {
+		 //循环列表中多个属性值，例如text-shadow属性
+        @if type-of($s) == list {
+            $sublists: true;
+            $vv: ();
+            @each $ss in $s {
+                $vv: append($vv,if(type-of($ss) == number, #{$ss / $base}em, $ss));
+            }
+            $values: append($values,join((), $vv));
+        }
+        @else {
+            $values: append($values,if(type-of($s) == number, #{$s / $base}em, $s));
+        }
+	}
+
+	$value: join((), $values, if($sublists,comma,space));
+    @each $prop in $props {#{$prop}: $value}
+}
+
+//将px转换成em
+//当元素的父元素没有重置字体大小时，相对于16px计算，如果你要将12px转换成em时，可以写成`pxToem(12px)`
+//当元素的父元素重置了字体大小时，如24px，如果你要将12px转换成em时,可以写成`pxToem(12px,24px)`
+//另外你还可以不显式的写也单位`px`
+
+@function pxToem($target-size,$context:$default-font-size){
+    @if not unitless($target-size){
+        $target-size: strip-units($target-size);//去掉 $target-size单位
+    }
+    @if not unitless($context){
+        $context: strip-units($context);//去掉 $context单位
+    }
+    @return ($target-size / $context) * 1em;
+}
+
+//
+// remCalc, pxTorem
+//
+// pxTorem换算的mixin和function
+// http://www.w3cplus.com/preprocessor/sass-px-to-rem-with-mixin-and-function.html
+
+@function pxTorem($target-size){ //$px为需要转换的字号
+	@if not unitless($target-size){
+        $target-size: strip-units($target-size);//去掉 $target-size单位
+    }
+    @return $target-size / $default-font-size * 1rem;
+}
+
+@mixin remCalc($property, $values...) {
+  $max: length($values);//返回$values列表的长度值
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉
+    $default-font-size: strip-units($default-font-size);
+    $pxValues: #{$pxValues + $value * $default-font-size}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  } 
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  } 
+
+  #{$property}: $pxValues; 
+  #{$property}: $remValues; 
+}
+
+@mixin xo-title($color, $fontSize) {
+  font-size: $fontSize;
+  color: $color;
+}
+
+@mixin xo-line-title($direction, $color, $fontSize, $border) {
+  @include xo-title($color, $fontSize);
+  height: $fontSize;
+  line-height: $fontSize;
+  font-weight: 700;
+  @if $direction == down {
+    border-bottom: $border;
+    padding-bottom: 5px;
+  }
+  @else if $direction == left {
+    border-left: $border;
+    padding-left: 5px;
+  }
+}
+
+@mixin xo-round-title($width:120px, $height: 30px, $bg: black, $color: white) {
+    width: $width;
+    height: $height;
+    line-height: $height;
+    background: $bg;
+    color: $color;
+    text-align: center;
+    padding-left: $height/2;
+    padding-right: $height/2;
+    & > * {
+      @include inline-block;
+      @include circle($height, $bg);
+      position: absolute;
+      top: 0;
+      right: -($height/2);
+    }
+}
+
+// 输出至少两个不同颜色的元素
+// @include xo-color-multi();
+@mixin xo-color-multi($classList: $sizeClass) {
+  @each $class in $classList {
+    $className: nth($class,1);
+    $property: nth($class, 2);
+    $value: nth($class, 3);
+
+    #{$className} {
+      #{$property}: $value
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/* orgLogin 登录 请不要引入base文件下的scss */
+$header-height: 50px;
+$login-container-width: 1000px;
+$banner-width: 1000px * 0.55;
+$banner-height: $banner-width / 1.447;
+$form-width: ($login-container-width) - $banner-width;
+
+#{$className}-login-container {
+  padding-top: $header-height + 20px;
+  width: $login-container-width;
+  height: 100%;
+  @include center-block;
+  #{$className}-login-box {
+    width: $login-container-width;
+    height: $banner-height;
+    border: 0px;
+    background: $xo-color-white;
+    @include box-shadow;
+    @include box-sizing(border-box);
+    #{$className}-login-box-banner img {
+      display: block; // 消除img和div之间的空隙
+      width: $banner-width;
+      height: $banner-height;
+    }
+    #{$className}-login-box-form {
+      width: $form-width;
+      @include box-sizing(border-box);
+      vertical-align: top;
+      #{$className}-login-box-form-inner {
+        position: relative;
+        top: 75px;
+      }
+      #{$className}-login-box-form-padding {
+        margin-left: 55px;
+        margin-right: 55px;
+      }
+      #{$className}-login-box-form-group {
+        border: 1px solid $xo-color-gray;
+        & > label {
+          color: $xo-color-gray;
+          font-weight: 200;
+          white-space: nowrap;
+        }
+        #{$className}-login-box-form-control {
+           border: 0;
+        }
+      }
+      #{$className}-pwdForget,
+      #{$className}-rememberMe {
+        color: $xo-color-black-secondary;
+      }
+
+      #{$className}-rememberMe {
+        float: left;
+      }
+      #{$className}-pwdForget {
+        float: right;
+      }
+
+    }
+  }
+}

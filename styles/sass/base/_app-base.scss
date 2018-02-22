@@ -1,0 +1,108 @@
+// css类前缀
+$className: '.xo';
+
+// 图片的路径
+$pic-components: '../../img' !default;
+
+//主要颜色
+$xo-color-primary:#3f607f !default;
+//次要颜色
+$xo-color-secondary:#e12001 !default;
+//深色
+$xo-color-deep:#2061bf !default;
+//浅色
+$xo-color-light:#95b3cf !default;
+
+//主要黑色
+$xo-color-black-primary:#333333 !default;
+//次要黑色
+$xo-color-black-secondary:#555555 !default;
+//深黑色
+$xo-color-black-deep:#000000 !default;
+//浅黑色
+$xo-color-black-light:#888888 !default;
+
+//主要灰色
+$xo-color-gray-primary:#f2f2f2 !default;
+//次要灰色
+$xo-color-gray-secondary:#fafafa !default;
+//深灰色
+$xo-color-gray-deep:#eeeeee !default;
+//浅灰色
+$xo-color-gray-light:#fefefe !default;
+
+//白色
+$xo-color-white:#ffffff !default;
+//灰色
+$xo-color-gray:#dddddd !default;
+//白灰色
+$xo-color-white-gray:#f6f7f8 !default;
+//深白灰色
+$xo-color-white-gray-deep:#dcdcdc !default;
+
+//盒子阴影
+$xo-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.03) !default;
+
+//头部阴影
+$xo-header-shadow: 1px 2px 6px rgba(0, 0, 0, 0.03) !default;
+
+//图片阴影
+$xo-img-shadow: 1px 2px 6px rgba(0, 0, 0, 0.05) !default;
+
+//层次图盒子阴影
+$xo-hierarchy-box:1px 1px 3px rgba(100, 100, 100, 0.6) !default;
+
+//toast
+$xo-toast-box:1px 1px 3px rgba(100, 100, 100, 0.3) !default;
+
+//switch
+$xo-switch-small: 0 1px 3px rgba(0,0,0,0.3) !default;
+
+//按钮阴影
+$xo-btn-shadow: 1px 2px 5px rgba(0, 0, 0, 0.05) !default;
+
+//spin
+$xo-spin-color-red:#f95372;
+$xo-spin-color-blue:#00abff;
+$xo-spin-color-yellow:#e7ba08;
+
+//bootstrap
+$xo-bootstrap-light:#ffffff;
+$xo-bootstrap-light-deep:#e6e6e6;
+
+$xo-bootstrap-primary:#20a8d8;
+$xo-bootstrap-primary-deep:#1985ac;
+
+$xo-bootstrap-success:#4dbd74;
+$xo-bootstrap-success-deep:#369759;
+
+$xo-bootstrap-info:#6acae6;
+$xo-bootstrap-info-deep:#32add3;
+
+$xo-bootstrap-warning:#f0bd0a;
+$xo-bootstrap-warning-deep:#bf9608;
+
+$xo-bootstrap-danger:#f86c6b;
+$xo-bootstrap-danger-deep:#e23533;
+
+$xo-bootstrap-secondary:#868e96;
+$xo-bootstrap-secondary-deep:#66696d;
+
+$xo-bootstrap-dark:#343a40;
+$xo-bootstrap-dark-deep:#111111;
+
+// 滚动条
+$xo-scrollbar-track:rgba(0, 0, 0, 0.06);
+$xo-scrollbar-thumb:rgba(0, 0, 0, 0.08);
+$xo-scrollbar-thumb-hover:rgba(0, 0, 0, 0.15);
+
+// row间距
+$xo-row-gap: 20px;
+
+// 字体
+$xo-font-lg: 24px;
+$xo-font-md: 16px;
+$xo-font-sm: 14px;
+
+// 顶层zIndex
+$xo-top-zIndex: 1000;

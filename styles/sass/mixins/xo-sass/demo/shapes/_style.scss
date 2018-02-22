@@ -1,0 +1,83 @@
+@import '../../src/compatibility';
+@import '../../src/shapes';
+
+body {
+	padding: 0;
+	margin: 0;
+}
+.wrapper {
+	position: relative;
+	// width: 100%;
+	width: 1080px;
+	height: 800px;
+	margin: 0 auto;
+	padding: 0;
+	background: #dcdcdc;
+	// overflow: hidden;
+}
+
+.hexContainer {
+	position: absolute;
+	@include size(220px);
+	@include inline-block();
+	@include clearfix();
+	// left: 20px;
+}
+
+.hexagon {
+	@include hexagon(220px, $direction: horizontal, $color: #222);
+    position: absolute; 
+    z-index: 2
+}
+
+.hexagon-shadow {
+	@include hexagon(220px, $direction: horizontal, $color: rgba(0,0,0,0.6));
+    position: absolute; 
+    top: 5px; left: 5px; 
+    @include filter-blur(10px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+    filter: url(blur.svg#blur);
+    z-index: 1;
+}
+
+.mask
+        {
+            transition: all 250ms ease-in-out 0s;
+            display: none;
+            position: relative;
+            height: 100%;
+            z-index: 9999;
+        }
+        .mask:hover
+        {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .hexagonT:hover .mask
+        {
+            display: block;
+        }
+
+.mask a {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -16px 0 0 -16px;
+    border-radius: 3px;
+    background-color: #d3b850;
+    text-align: center;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+    color: White;
+    font-size: 18px;
+    z-index: 999;
+    @include transform(scale(0.75));
+}
+
+#coolImage,
+#lovelinImage,
+#gogoingImage {
+    @include transform(scale(1.3) rotate(30deg));
+}

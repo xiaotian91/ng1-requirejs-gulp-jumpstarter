@@ -1,0 +1,66 @@
+@import './sass-core';
+
+// btn-size
+@mixin btn-size($padding:nth($btnNormalSize,1), $height:nth($btnNormalSize,2), $fontSize:nth($btnNormalSize,3), $formbtn: false){
+  padding:0 $padding;
+  font-size:$fontSize;
+
+  @if $formbtn{
+    // form元素按钮（如button,input:submit），设置height来反应其高度
+    height: $height;
+  } @else {
+    // 普通按钮，通过设置line-height来反应其高度
+    line-height: $height;
+  }
+}
+
+/*
+ * $width: 宽度
+ * $height: 高度
+   $fontSize: 字体大小
+ * $shadow: 按钮阴影
+ */
+
+@mixin xo-btn($width, $height, $fontSize, $shadow: false, $border: false, $bgColor: '#bcbcbc', $bgHoverColor: false) {
+  width: $width;
+  @include ellipsis($width);
+  @include btn-size(0, $height, $fontSize, true);
+  @include inline-block;
+  text-align: center;
+  line-height: $height;
+  background-color: $bgColor;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    @if $bgHoverColor {
+      background-color: $bgHoverColor;
+    } @else {
+      @include opacity(80);
+    }
+  }
+  & > * {
+    color: $xo-color-white;
+  }
+  @if $shadow {
+    @include box-shadow($shadow);
+  }
+  @if $border {
+    border: $border;
+  } @else {
+    border: 0;
+  }
+}
+
+@mixin xo-btn-size-multi($btnBaseClass, $sizeLists: $btnSizeClass) {
+  @each $size in $sizeLists {
+    $class: nth($size, 1);
+    $width: nth($size, 2);
+    $height: nth($size, 3);
+    $fontSize: nth($size, 4);
+    $shadow: nth($size, 5);
+
+    .#{$btnBaseClass}-#{$class} {
+      @include xo-btn($width, $height, $fontSize, $shadow: false);
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@mixin xo-simple-row($gap: 10px, $fontSize: 14px) {
+  margin-bottom: $gap;
+  font-size: $fontSize;
+}
+
+
+@mixin xo-row-size-multi($baseClass: 'xo-simple-row', $sizeLists: $sizeClass) {
+  @each $size in $sizeLists {
+    $class: nth($size, 1);
+    $gap: nth($size, 2);
+    $fontSize: nth($size, 3);
+
+    .#{$baseClass}-#{$class} {
+      @include xo-simple-row($gap, $fontSize);
+    }
+  }
+}
+
+@mixin xo-simple-block($width: 50px, $height: 50px, $bg: none, $color: black, $border: 0, $padding: false, $onlyBottomBorder: false) {
+  width: $width;
+  height: $height;
+  background: $bg;
+  color: $color;
+
+  @if $onlyBottomBorder {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: $border;
+  } @else {
+    border: $border;
+  }
+
+  @if $padding == false {
+    @include box-sizing(border-box);
+  } @else {
+    padding: $padding;
+  }
+}
+
+@mixin xo-fixed-img($width: 48px, $height: 48px, $border: 0, $isRound: false) {
+  width: $width;
+  height: $height;
+  border: $border;
+  @if $isRound {
+    border-radius: 50%;
+  }
+}
+
+@mixin xo-fullpage-container($bg) {
+  position: relative;
+  background: $bg;
+  background-size: 100vw 100vh;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+}
+
+@mixin xo-progress-bar($width: 100%, $height: 20px, $baseBg: #ddd, $highlighter: black, $isRound: false) {
+  @include size($width, $height);
+  background: $baseBg;
+  @if $isRound {
+    border-radius: $height;
+  }
+  & > div {
+    background: $highlighter;
+    height: $height;
+    @if $isRound {
+      border-top-left-radius: $height;
+      border-bottom-left-radius: $height;
+    }
+  }
+}
+
+@mixin xo-dropdown-menu($width: 100%, $bg: white, $borderColor: black, $align: center, $arroWidth: 20px, $arrowHeight: 10px) {
+  width: $width; 
+  background-color: $bg; 
+  border-top: 2px solid $borderColor; 
+  text-align: $align;
+
+  & > div {
+    text-align: $align;
+    position: absolute; 
+    @include triangle(up, $arroWidth, $arrowHeight, $borderColor );
+    top: -($arrowHeight); 
+    left: $width/2 - $arroWidth/2;
+  }
+
+  & > ul {
+    list-style: none;
+  }
+}
+
+/* 九宫格布局 */
+@mixin sudoku($width, $gap, $className: '.grid', $showMask: true) {
+  $w1: ($width - $gap * 4)/3; // 有线的九宫格（真正的九宫格）
+  $w2: $width /3; // 普通九宫格布局
+
+  #{$className} {
+    list-style-type:none;
+  }
+  #{$className}:after {
+    content: ".";
+    display: block;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  #{$className} > * {
+    float: left;
+    @if $showMask {
+      line-height: $w1;
+    } @else {
+      line-height: $w2;
+    }
+
+  }
+  #{$className} > * > *, #{$className} > * > *:visited {
+    display: block;
+    text-align: center;
+    @if $showMask {
+      @include size($w1, $w1);
+      border: $gap solid #ccc;
+      margin-left: -$gap;
+      margin-top: -$gap;
+      #{$className} li a:hover {
+        border-color: #f00;
+        z-index: 2;
+      }
+    } @else {
+      @include size($w2, $w2);
+    }
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/*
+ * 固定宽度选项卡布局
+ */
+@mixin xo-fixed-tab-panel($width: 600px, $tabHeight: 40px, $panelHeight: 300px, $fontSize: 18px, $tabCount: 5) {
+  & > ul {
+    @include size($width, $tabHeight);
+    overflow: hidden;
+    @include center-block;
+    & > li {
+      @include float(left);
+      @include size($width/$tabCount, $tabHeight);
+      list-style: none;
+      text-align: center;
+      line-height: $tabHeight;
+      font-size: $fontSize;
+      cursor: pointer;
+    }
+  }
+  & > div {
+    @include size($width, $panelHeight);
+    display: none;
+    margin-top: -1px;
+  }
+  & > div.on {
+    display: block;
+  }
+
+
+}
+

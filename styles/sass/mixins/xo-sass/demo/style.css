@@ -1,0 +1,264 @@
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.padding-box, .content-box, .border-box {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.hide-text, .logo {
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.padding-box, .content-box, .border-box {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.comment:after {
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  overflow: hidden; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.padding-box, .content-box, .border-box {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+#page > .content {
+  *zoom: 1; }
+  #page > .content:before, #page > .content:after {
+    content: "";
+    display: table; }
+  #page > .content:after {
+    clear: both; }
+
+.padding-box, .content-box, .border-box {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+@font-face {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/fontawesome-webfont.eot");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix") format("eot"), url("../fonts/fontawesome-webfont.svg#FontAwesome") format("svg"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype"); }
+html {
+  font-size: 16; }
+
+.a {
+  width: 100px;
+  border: 1px solid black;
+  background: #666; }
+
+.b {
+  width: 100pt;
+  background: #666; }
+
+#page > .fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px; }
+#page > .content {
+  margin-top: 80px; }
+#page > .fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px; }
+#page > .content {
+  margin-bottom: 60px; }
+#page > .fixed-header, #page > .fixed-footer {
+  background: #4C9ED9; }
+
+.container {
+  width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  background: #666; }
+  .container > .sfc-main {
+    overflow: hidden;
+    margin-left: 220px; }
+  .container > .sfc-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px; }
+
+.user {
+  overflow: hidden; }
+  .user ul,
+  .user ol {
+    list-style: none;
+    float: left;
+    margin-left: -5px; }
+    .user ul li,
+    .user ol li {
+      float: left;
+      margin-left: 5px; }
+
+.header {
+  line-height: 1.875em;
+  width: 7.8125em;
+  height: 7.8125em;
+  padding: 0em 1.5625em;
+  text-shadow: #0d6e28 0.0625em 0.0625em, #777 0em 0em 0.125em;
+  box-shadow: inset 0em 0em 0em 0.0625em #2a9022, inset 0em 0em 0.1875em #459966;
+  font-size: 0.75em; }
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: url(img/texture.png) lightgreen no-repeat center center; }
+
+.invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  *clip: rect(1px, 1px, 1px, 1px); }
+
+.comment {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -hp-pre-wrap;
+  word-wrap: break-word; }
+
+.comment:after {
+  border-right: 15px solid red;
+  border-top: 15px dashed transparent;
+  border-bottom: 15px dashed transparent; }
+
+.padding-box {
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  padding: 20px;
+  border: 5px solid black; }
+
+.content-box {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  padding: 20px;
+  border: 5px solid black; }
+
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  padding: 20px;
+  border: 5px solid black; }
+
+code {
+  font-family: Monaco, Consolas, monospace; }
+
+.logo {
+  width: 200px;
+  height: 100px;
+  background: url(http://www.baidu.com/img/bdlogo.gif) no-repeat -30px 0; }
+
+.cell {
+  width: 120px;
+  font-size: toRem(20px);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+
+/*# sourceMappingURL=style.css.map */

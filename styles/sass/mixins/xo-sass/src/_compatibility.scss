@@ -1,0 +1,34 @@
+//
+// Compatibility
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 基础兼容性封装
+
+// 依赖于 variables, util
+@import "./variables";
+@import "./util";
+
+
+// inline-block 
+
+@mixin inline-block ($extend:true) {
+  @if $extend {
+    @extend %inline-block;
+  } @else {
+    display: inline-block;
+    @if $support-ie-version < 8 {
+      *display: inline;*zoom:1;
+    }
+  }
+}
+
+%inline-block{
+  @include inline-block(false);
+}
+
+// box sizing
+
+@mixin box-sizing($boxmodel) {
+	@include prefixer( box-sizing, $boxmodel, webkit moz);
+}

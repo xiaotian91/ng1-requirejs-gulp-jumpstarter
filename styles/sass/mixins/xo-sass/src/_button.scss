@@ -1,0 +1,252 @@
+//
+// Util
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 常用辅助类工具函数
+// 包含的mixin/function从上到下有:
+// 
+// size, border-radius, float, clearfix, strip-units
+// prefixer, prefixer-value, disable-prefix-for-all
+
+// 依赖于 variables
+@import 'variables';
+
+@mixin size($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin border-radius($size) {
+	border-radius: $size;
+}
+
+// float left & right
+@mixin float($float:left) {
+  float: $float;
+  @if $support-ie-version < 8 {
+    display: inline;
+  }
+}
+%float{
+  @include float;
+}
+
+// clearfix
+// 闭合子元素的浮动
+@mixin clearfix ($extend:true) {
+  @if $extend {
+    @extend %clearfix;
+  } @else {
+    @if $support-ie-version < 8 {
+      *zoom: 1;
+    }
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+  }
+}
+%clearfix{
+  @include clearfix(false);
+}
+
+//去掉一个值的单位，如12px => 12
+// eg. strip-units(12px) => 12
+@function strip-units($number) {
+	@return $number / ($number * 0 + 1)
+}
+
+// 计算square root
+@function approximateSq($num, $approx) {
+  $root : (( $num / $approx ) + $approx) / 2;
+  @return $root;
+}
+
+@function sqrt($num) {
+  $num: strip-units($num);
+  $root:0;
+  $testRoot : 0;
+  $upperBounds : round($num / 2) + 1; //never need over half the main number. Add one just to be sure!
+  @for $test from 2 through $upperBounds {
+    $sq : $test * $test;
+    @if $sq <= $num {
+      $testRoot : $test;
+    }
+  }  
+  
+  $root : (approximateSq($num, $testRoot));
+  
+  @return $root;
+}
+
+// prefixer
+// 用于在属性上加前缀
+// 默认这里将只输出webkit前缀和标准（如果要开启opera的可以将$prefix-for-opera设置为true）
+//-----------------------------------------------------
+
+@mixin prefixer($property, $value, $prefixes: o webkit) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property}: $value;
+    }
+  }
+  @if $prefix-no {
+    #{$property}: $value;
+  }
+}
+
+// prefixer-value
+// 用于在值上加前缀
+// 默认这里将输出webkit前缀，moz前缀和标准
+
+@mixin prefixer-value($property, $value, $prefixes: webkit moz) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      #{$property}: -webkit-#{$value};
+    }
+    @else if $prefix == moz and $prefix-for-mozilla == true {
+      #{$property}: -moz-#{$value};
+    }
+    @else if $prefix == o and $prefix-for-mozilla == true {
+      #{$property}: -o-#{$value};
+    }
+    @else if $prefix == ms and $prefix-for-microsoft == true {
+      #{$property}: -ms-#{$value};
+    }
+  }
+  @if $prefix-no {
+    #{$property}: $value;
+  }
+}
+
+// disable prefix
+
+// 设置所有前缀和标准为false，用于@keyframes
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:      false !global;
+  $prefix-for-mozilla:     false !global;
+  $prefix-for-microsoft:   false !global;
+  $prefix-for-opera:       false !global;
+  $prefix-no:             false !global;
+}
+
+// Transformations
+//------------------------------------
+
+// Transform
+//-----------------------------------------------------
+@mixin transform($property...) {
+  @include prefixer(transform, $property);
+}
+
+@mixin transform-origin($axes) {
+  // x-axis - left | center | right  | length | %
+  // y-axis - top  | center | bottom | length | %
+  // z-axis -                          length
+  @include prefixer(transform-origin, $axes);
+}
+
+@mixin transform-style ($style: preserve-3d) {
+  // flat | preserve-3d
+  @include prefixer(transform-style, $style);
+}
+
+// rotate
+@mixin rotate($degrees...) {
+  @include prefixer(transform, rotate($degrees));
+}
+@mixin rotate3D($degrees...) {
+  @include prefixer(transform, rotate3D($degrees));
+}
+@mixin rotateX($degrees) {
+  @include prefixer(transform, rotateX($degrees));
+}
+@mixin rotateY($degrees) {
+  @include prefixer(transform, rotateY($degrees));
+}
+@mixin rotateZ($degrees) {
+  @include prefixer(transform, rotateZ($degrees) );
+}
+
+// scale
+@mixin scale($ratio...) {
+  @include prefixer(transform, scale($ratio));
+}
+@mixin scale3D($ratio...) {
+  @include prefixer(transform, scale3D($ratio));
+}
+@mixin scaleX($ratio) {
+  @include prefixer(transform, scaleX($ratio));
+}
+@mixin scaleY($ratio) {
+  @include prefixer(transform, scaleY($ratio));
+}
+@mixin scaleZ($ratio) {
+  @include prefixer(transform, scaleZ($ratio));
+}
+
+// filter
+//-----------------------------------------------------
+@mixin filter($function...){
+  // <filter-function> [<filter-function>]* | none
+  @include prefixer(filter, $function, webkit moz);
+}
+
+@mixin filter-blur($px){
+  @include prefixer(filter, blur($px), webkit moz);
+}
+
+@mixin filter-grayscale($percent: 100%){
+  @include prefixer(filter, grayscale($percent), webkit moz);
+}
+
+@mixin filter-drop-shadow($shadow...){
+  @include prefixer(filter, drop-shadow($shadow), webkit moz);
+}
+
+// @include url("filepath");
+@mixin filter-url($url){
+  @include prefixer(filter, url(#{$url}), webkit moz);
+}
+
+@mixin filter-brightness($value: 0.5){
+  @include prefixer(filter, brightness($value), webkit moz);
+}
+
+@mixin filter-contrast($value){
+  @include prefixer(filter, contrast($value), webkit moz);
+}
+
+@mixin filter-hue-rotate($value: 90deg){
+  @include prefixer(filter, hue-rotate($value), webkit moz);
+}
+
+@mixin filter-invert($value: 100%){
+  @include prefixer(filter, invert($value), webkit moz);
+}
+
+@mixin filter-opacity($value){
+  @include prefixer(filter, opacity($value), webkit moz);
+}
+
+@mixin filter-saturate($value){
+  @include prefixer(filter, saturate($value), webkit moz);
+}
+
+@mixin filter-sepia($value: 100%){
+  @include prefixer(filter, sepia($value), webkit moz);
+}

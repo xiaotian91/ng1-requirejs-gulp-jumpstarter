@@ -1,0 +1,13 @@
+$gridSpanSwitch: true;
+$gridMaskSwitch: true;
+
+@import '../../src/fixedgrid';
+
+body {
+	margin: 0;
+}
+
+.wrapper {
+	@include wrapper();
+	background: #666;
+}

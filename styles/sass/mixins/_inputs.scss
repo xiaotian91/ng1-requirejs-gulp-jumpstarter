@@ -1,0 +1,57 @@
+@import './layout';
+
+@mixin xo-radio-checkbox($bg: false) {
+  -webkit-appearance: none;
+  vertical-align: middle; // Label与input checkbox对齐
+  @if not $bg {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+  } @else {
+    width: 30px;
+    height: 30px;
+    background: url($bg)  no-repeat;
+  }
+}
+
+@mixin xo-searchbox($width, $height, $bg, $color, $border, $padding, $border-radius: 0, $iconSize: 14px, $icon-pos: right) {
+  @include xo-simple-block($width: $width, $height: $height, $bg: $bg, $color: $color, $border: $border, $padding: $padding);
+  position: relative;
+  border-radius: $border-radius;
+  @include box-sizing(content-box);
+  & > input {
+    border: 0;
+    outline: none;
+    color: $color;
+    height: $height;
+    background: $bg;
+  }
+  & > div {
+    @include size($height, $height);
+    position: absolute;
+    top: $padding;
+    font-size: $iconSize;
+    color: $color;
+    & > * {
+      @include absolute-center;
+    }
+  }
+  @if $icon-pos == left {
+    & > div {
+      left: 0;
+      margin-left: $padding;
+    }
+  }
+  @else if $icon-pos == right {
+    & > div {
+      right: 0;
+      margin-right: $padding;
+    }
+
+  }
+
+}

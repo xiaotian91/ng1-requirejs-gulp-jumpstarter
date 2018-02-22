@@ -1,0 +1,105 @@
+@charset "UTF-8";
+//-----------------------------------------------------	
+// font-face scss
+// http://fontawesome.io/
+// 支持ie8+
+//-----------------------------------------------------
+
+
+//-----------------------------------------------------
+// 如需要全部的icon class，设置$fontClassAllSwitch为true即可
+// 如输出单个icon class，直接调用@include font-icon($name,fontSearch($name));
+// 如要输出大于或等于2个icon，覆写$fontClassoutput即可，如$fontClassoutput:glass music search heart;则输出这四个icon的class
+//-----------------------------------------------------
+
+
+// 导入变量
+@import "variables";
+@import "../compatibility";
+
+//
+// @font-face的快捷书写方式
+// http://www.css3files.com/font/
+// 1 The eot fontfile. Can be omitted if you don`t want to support Internet Explorer prior to version 9 (including semicolon).
+// 2 Can also be omitted for Internet Explorer < 9. ?iefix prevents IE6 from interpreting all of the following. If the whole IE family (6 to 9) should be supported, 1 and 2 are needed.
+// 3 Can be omitted if iPad versions prior to iOS 4.2 shouldn’t be supported. 
+// 4 The ttf fontfile. Necessary to support (Mobile) Safari and Opera. 
+// 5 The woff fontfile for all modern browsers (best choice).
+
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal ) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    src: url('#{$file-path}.eot'); // 1
+    src: url('#{$file-path}.eot?#iefix')               format('eot'), // 2
+         url('#{$file-path}.svg##{$font-family}')      format('svg'), // 3
+         url('#{$file-path}.woff')                     format('woff'), // 4
+         url('#{$file-path}.ttf')                      format('truetype'); //5
+  }
+}
+
+// 申明@font-face
+@include font-face($fontFamily, $fontFilePath);
+
+
+// 定义mixin等基础功能
+//-----------------------------------------------------
+
+// 基础样式
+%font-basic{
+  display: inline-block;
+  font-family: $fontFamily;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// 传入单个名字，以在所有的$ClassAll变量中查询到其对应的内容
+// 如glass，查询到的就是"\f000"，music对应的就是"\f001"
+@function fontSearch($needle, $sea: $fontClassAll){
+    @each $item in $sea {
+        $index: index($item, $needle);
+
+        @if $index {
+            $return: if($index == 1, 2, $index);
+            @return nth($item,$return);
+        }
+    }
+    @warn "no #{$needle} in the variables, please check it!";
+    @return false;
+}
+
+
+// icon mixin
+@mixin font-icon($class){
+	.#{$fontClassPrefix}-#{$class}{
+		@extend %font-basic;
+
+		&:before{
+			content: fontSearch($class);
+			@include box-sizing(border);
+		}
+	}
+}
+
+
+// 全部输出
+@if $fontClassAllSwitch {
+	@each $class in $fontClassAll {
+		$name:     nth($class,1);
+		$content:  nth($class,2);
+
+		@include font-icon($name);
+	}
+} @else {
+	// 部分输出的class 
+	@if length($fontClassoutput) >= 2{
+		@each $class in $fontClassoutput{
+			@include font-icon($class);
+		}
+	}
+}

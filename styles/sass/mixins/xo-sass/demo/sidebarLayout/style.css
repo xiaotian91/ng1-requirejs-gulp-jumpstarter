@@ -1,0 +1,19 @@
+body {
+  margin: 0; }
+
+.wrapper {
+  position: relative; }
+  .wrapper > .xo-sidebar {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    height: 100vh; }
+  .wrapper > .xo-main {
+    overflow: hidden;
+    margin-right: 220px; }
+  .wrapper > .xo-sidebar {
+    right: 0; }
+  .wrapper .xo-sidebar {
+    background: #666; }
+
+/*# sourceMappingURL=style.css.map */

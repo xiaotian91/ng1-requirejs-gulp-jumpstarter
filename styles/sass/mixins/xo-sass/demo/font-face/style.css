@@ -1,0 +1,59 @@
+@charset "UTF-8";
+@font-face {
+  font-family: IcoMoon;
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/icomoon.eot");
+  src: url("fonts/icomoon.eot?#iefix") format("eot"), url("fonts/icomoon.svg#IcoMoon") format("svg"), url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"); }
+.icon-pen, .icon-pacman, .icon-floder, .icon-user {
+  display: inline-block;
+  font-family: IcoMoon;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-pen:before {
+  content: "";
+  -webkit-box-sizing: border;
+  -moz-box-sizing: border;
+  box-sizing: border; }
+
+.icon-pacman:before {
+  content: "";
+  -webkit-box-sizing: border;
+  -moz-box-sizing: border;
+  box-sizing: border; }
+
+.icon-floder:before {
+  content: "";
+  -webkit-box-sizing: border;
+  -moz-box-sizing: border;
+  box-sizing: border; }
+
+.icon-user:before {
+  content: "";
+  -webkit-box-sizing: border;
+  -moz-box-sizing: border;
+  box-sizing: border; }
+
+.nav {
+  overflow: hidden; }
+  .nav ul,
+  .nav ol {
+    list-style: none;
+    float: left;
+    margin-left: -12px; }
+    .nav ul li,
+    .nav ol li {
+      float: left;
+      margin-left: 12px; }
+  .nav a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit; }
+    .nav a:active, .nav a:focus {
+      outline: none; }
+
+/*# sourceMappingURL=style.css.map */

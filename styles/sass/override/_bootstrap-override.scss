@@ -1,0 +1,58 @@
+/* 去除bootstrap默认的a标签颜色 */
+a {
+  color: black;
+}
+
+a:hover, a:focus {
+  color: black;
+}
+
+/* 去除bootstrap hr默认的margin */
+
+h1, h2, h3, h4, h5, h6, hr, ul, ol {
+  margin-top: 0;
+  margin-bottom:0;
+}
+
+/* 去除bootstrap默认的输入框，select等阴影及圆角 */
+textarea, input[type="text"], input[type="password"],
+input[type="datetime"], input[type="datetime-local"],
+input[type="date"], input[type="month"], input[type="time"],
+input[type="week"], input[type="number"], input[type="email"],
+input[type="url"], input[type="search"], input[type="tel"],
+input[type="color"], .uneditable-input, select {
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* 定制化bootstrap分页控件的颜色 */
+
+// 普通状态下的分页块
+.pagination>li:first-child>a,
+.pagination>li:last-child>a,
+.pagination>li>a.prev,
+.pagination>li>a.next {
+  background: $xo-admin-blue-dark;
+}
+
+.pagination>li:first-child>a:hover,
+.pagination>li:last-child>a:hover,
+.pagination>li>a.prev:hover,
+.pagination>li>a.next:hover {
+  color: $xo-color-white;
+}
+
+// 选中状态/悬停状态下的分页块
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination a:hover,
+.pagination span:hover,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
+    background: $xo-admin-blue-light !important;
+    color: $xo-color-white !important;
+}

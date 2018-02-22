@@ -1,0 +1,140 @@
+//
+// Fixed Grid
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 固定宽度网格布局 可以控制是否输出span的class
+
+// thanks:
+// http://www.blankwork.net/
+// http://semantic.gs/
+// http://heygrady.com/blog/2011/02/17/using-sass-with-the-1kb-grid-system/   
+// https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/functions/_flex-grid.scss
+// http://bjorkoy.com/2010/05/css-grids-with-sass/
+
+// 依赖于 variables, util
+@import "./variables";
+@import "./util";
+
+// 固定网格变量
+// 这里设计的是1000px的布局，每个栅格为65px，共12个，计算公式：(65+20)*12-20 = 1000
+// 如果将gridColumnWidth设置为60px，就是盛名的960网格系统
+//----------------------------------------------------- 
+$gridColumns:                     12 !default;      // Total number of columns
+$gridColumnWidth:                 65px !default;   // Width of a single column
+$gridGutter:                      20px !default;     // Width of the gutter
+$gridSystemWidth:                 $gridColumns * ($gridColumnWidth + $gridGutter);
+
+
+// 开关
+// true for grid class(.span1, .span2...)
+// ----------------------------------------
+$gridSpanSwitch:                  false !default;
+$gridMaskSwitch:                  false !default; // 默认不打开grid遮罩
+
+// 输出的类名
+
+$className:                       xo !default;
+
+
+
+// A Function to calculate width:
+// 这个函数几乎是blankwork的灵魂，用来计算宽度的
+// Example usage: (based on default values)
+// getWidth(3, false) would return 240px
+// getWidth(3) or getWidth(3, true) would return 220px;
+// and plain getWidth() or getWidth would return 940px;
+
+@function getWidth($i:$gridColumns, $onlyInnerWidth:true, $subtract:0){
+  // First set a default return value
+  $return: ($gridColumnWidth + $gridGutter) * $i - $subtract !default;
+
+  // If we want to get only the inner width (without gutter)
+  @if $onlyInnerWidth == true {
+    // Return the total calculated width, without the margins
+    // If the second parameter of this function is not specified
+    // This is what is going to be returned
+    $return: ($gridColumnWidth + $gridGutter) * $i - $gridGutter - $subtract;
+  }
+
+  @return $return;
+}
+
+// span or column's gutter
+%margin-gutter{
+  margin-right: $gridGutter;
+}
+
+%gridMask {
+  background-color: rgba(240,128,128,0.5);
+  height: inherit;
+  position: relative;
+  z-index: 3;
+}
+
+// Column Mixin:
+// We're defining the default values as follows:
+// Default Column Count: Max Column Count
+// Padding (explained below): 0
+
+@mixin column($i: $gridColumns, $subtract:0){
+  // 解决当$i 小于$gridColumns的时候需要float
+  @if $i < $gridColumns {
+    @extend %float;
+  }
+  @extend %margin-gutter;
+
+  $getWidth: getWidth($i, true, $subtract); // Use the width calculation function to get the width 
+  width: $getWidth;
+}
+
+// wrapper
+// This typically is a main content wrapper, 
+// But just in case someone finds an alternative use of this, 
+// we shouldhave the flexibility
+// So wrapper( column count, center ?, subtract)
+
+@mixin wrapper($i: $gridColumns, $center:true, $subtract:0, $row-selector: ".row"){
+  @include clearfix(false);
+  
+
+  // Because this is a wrapper, we don't need the outer gutter - we need the full width
+  $getWrapperWidth: getWidth($i, false, $gridGutter);
+  // In case there is a need to subtract the wrapper
+  $wrapperWidth: $getWrapperWidth - $subtract;
+  width:$wrapperWidth;
+
+  // If we want the wrapper to be centered (by default we do)
+  @if $center == true {
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  & > #{$row-selector} {
+    position: relative;
+    @include clearfix(false);
+  }
+
+  & > #{$row-selector} [class*="col-"]:last-child { //
+    margin-right: 0px;
+    float: right;
+  }
+}
+
+// class span1-$gridColumns
+// span的class循环输出，通过变量$gridSpanSwitch来控制是否输出
+//-----------------------------------------------------  
+@if $gridSpanSwitch {
+  @for $i from 1 through $gridColumns {
+    #{$className}-col-#{$i} { 
+      @include float();
+      @extend %margin-gutter;
+      
+      width:getWidth($i);
+      
+      @if $gridMaskSwitch {
+        @extend %gridMask;
+      }
+    }
+  } 
+}

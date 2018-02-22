@@ -1,0 +1,12 @@
+@import '../../src/layout';
+
+body {
+	margin: 0;
+}
+
+.wrapper {
+	@include xo-layout-sidebar(right, 220px);
+	.xo-sidebar {
+		background: #666;
+	}
+}

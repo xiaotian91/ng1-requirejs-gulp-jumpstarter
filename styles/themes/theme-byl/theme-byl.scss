@@ -1,0 +1,40 @@
+/* 主变量 */
+@import '../../sass/base/app-base';
+
+/* 霍尼韦尔覆盖override */
+// 组件用到的图片地址
+$pic-components: "img/components";
+$pic-backgrounds: "img/backgrounds";
+
+//主要颜色
+$xo-color-primary: #27ae61 !important;
+//次要颜色
+$xo-color-secondary: #fdb032 !important;
+//深色
+$xo-color-deep: yellow !important;
+//浅色
+$xo-color-light:#95b3cf !important;
+
+//深灰色
+$xo-color-gray-deep: #666666 !important;
+//浅灰色
+$xo-color-gray-light:#eeeeee !important;
+
+// 项目用到的补充颜色(各种badge)
+$xo-color-orange: #fdb032;
+$xo-color-green: #27ae61;
+$xo-color-pink: #e47786;
+$xo-color-skyblue: #68c8f5;
+
+// 后台用到的蓝色
+$xo-admin-blue-dark: #b6dde7;
+$xo-admin-blue-light: #1dafd1;
+
+/* 所有模块 */
+@import '../../sass/base/common';
+@import '../../sass/components/proj-common';
+@import '../../sass/components/xoShell';
+@import '../../sass/components/orgLogin';
+
+/* 覆盖第三方类 */
+@import '../../sass/override/bootstrap-override';

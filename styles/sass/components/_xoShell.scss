@@ -1,0 +1,225 @@
+@import '../mixins/xo-sass/src/layout';
+@import '../mixins/xo-sass/src/util';
+
+$container-width: 1200px;
+$mainHeader-height: 50px;
+$container-padding: 20px;
+$menu-width: 240px;
+$subHeader-height: $mainHeader-height / 1.5;
+$footer-height: 90px;
+$badge-height: 25px;
+$minHeight: 1000px; // 页面最小高度
+
+/* 主框架Shell，左右布局（左菜单， 右主体内容）*/
+#{$className}-orgShell-container {
+  position: relative;
+  min-height: 100%; //使内容高度和body高度一样
+  margin-bottom: -($footer-height); /* equal to footer height */
+  @include xo-layout-header(true, $mainHeader-height, $xo-color-white, 35px,
+          #{$className}-orgShell-header, #{$className}-orgShell-body,
+          #{$className}-orgShell-header-lf, #{$className}-orgShell-header-rt,
+          true, #{$className}-orgShell-header-subhead, $xo-color-primary);
+
+  #{$className}-orgShell-body-inner {
+    position: relative; 
+    background: $xo-color-white;
+  }
+  
+  #{$className}-orgShell-header { // 将Main Header的z-index设为最大,subhead的index为1000, 避免header里的menu被subhead覆盖
+    z-index: 9999;
+
+
+    #{$className}-orgShell-header-rt > div {
+      @include inline-block;
+      & > #{$className}-dropdown-menu-container {
+        & > span {
+          margin-left: 8px;
+        }
+      }
+    }
+
+
+    #{$className}-orgShell-header-lf {
+      @include xo-image-vertical-center($mainHeader-height);
+    }
+  }
+
+  #{$className}-orgShell-header-subhead > div {
+    @include xo-layout-page($container-width);
+    @include xo-layout-horizontal-list(0, left);
+
+    & > ul > li {
+      $border: 1px solid $xo-color-white;
+      @include size(185px, $subHeader-height);
+      border-left: $border;
+      line-height: $subHeader-height;
+      text-align: center;
+      color: $xo-color-white;
+      &:last-child {
+        border-right: $border;
+      }
+      & > * {
+        color: $xo-color-white;
+      }
+    }
+
+    & > ul > li#{$className}-orgShell-menu.on {
+      background: $xo-color-secondary;
+    }
+
+  }
+
+  #{$className}-orgShell-body {
+    @include xo-layout-page($container-width);
+    margin-bottom: $footer-height + $container-padding; //控制主体内容和底部高度之间距离
+    min-height: $minHeight;
+    & > #{$className}-orgShell-body-header-layout-top{
+      width:100%;
+      height:38px;
+      line-height:38px;
+      font-size: $xo-font-md;
+      #{$className}-prev-next-btn-group{
+        @include float(right);
+        & > span > i{
+          position: relative;
+          top:2px;
+        }
+        #{$className}-prev-btn,#{$className}-next-btn{
+          cursor:pointer;
+        }
+        #{$className}-prev-btn{
+          margin-right:6px;
+        }
+        #{$className}-prev-btn>i{
+          margin-right:3px;
+        }
+        #{$className}-next-btn>i{
+          margin-left:3px;
+        }
+      }
+    }
+
+    & > #{$className}-orgShell-body-sidebar-layout-lf {
+      @include xo-layout-sidebar(left, $menu-width, $main-selector: #{$className}-orgShell-body-sidebar-layout-main, $sidebar-selector: #{$className}-orgShell-body-sidebar-layout-menu, $gap: 15px);
+      margin-top: 15px;
+      min-heigt: $minHeight;
+
+      #{$className}-orgShell-body-sidebar-layout-main > #{$className}-orgShell-body-sidebar-layout-main-inner {
+        position: relative;
+        background: $xo-color-white;
+        padding: 15px 35px 17.5px 35px;
+        @include box-sizing(border-box);
+        @extend %clearfix;
+
+        #{$className}-orgShell-body-sidebar-layout-main-title {
+          width: 100%;
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+    }
+    & > #{$className}-orgShell-body-sidebar-layout-rt {
+      @include xo-layout-sidebar(right, 320px, $main-selector: #{$className}-orgShell-body-sidebar-layout-main, $sidebar-selector: #{$className}-orgShell-body-sidebar-layout-menu, $gap: 15px);
+      margin-top: 15px;
+      min-height: $minHeight;
+
+      #{$className}-orgShell-body-sidebar-layout-main > #{$className}-orgShell-body-sidebar-layout-main-inner {
+        position: relative;
+        background: $xo-color-white;
+        padding: 15px 35px 17.5px 35px;
+        @include box-sizing(border-box);
+        @extend %clearfix;
+
+        #{$className}-orgShell-body-sidebar-layout-main-title {
+          width: 100%;
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+    }
+  }
+}
+
+/* footer */
+#{$className}-orgShell-footer {
+  padding: 0 $container-padding;
+  height: $footer-height;
+  line-height: $footer-height;
+  background-color: $xo-color-gray-deep;
+  color: $xo-color-white-gray-deep;
+  @include xo-simple-lt-div;
+}
+
+/* 通用的信息块（上面图片，下面内容） */
+#{$className}-info-display-box {
+  & > #{$className}-info-display-box-img {
+    #{$className}-info-display-box-img-badge {
+      @include xo-simple-block($width: 70px, $height: $badge-height, $bg: none, $color: $xo-color-white, $border: 0, $padding: false);
+      position: absolute;
+      top: 0;
+      right: 0;
+      line-height: $badge-height;
+      text-align: center;
+    }
+
+    img {
+      @include filter-grayscale(30%);
+      @include transition(transform, 0.3s);
+    }
+
+    &:hover img {
+      @include scale(1.4);
+      @include filter-grayscale(0);
+    }
+
+    $colorClass: (#{$className}-info-display-box-img-badge-skyblue, 'background-color', $xo-color-skyblue)
+            (#{$className}-info-display-box-img-badge-pink, 'background-color', $xo-color-pink)
+            (#{$className}-info-display-box-img-badge-orange, 'background-color', $xo-color-orange)
+            (#{$className}-info-display-box-img-badge-green, 'background-color', $xo-color-green);
+
+    @include xo-color-multi($classList: $colorClass);
+  }
+  & > #{$className}-info-display-box-content {
+    position: relative;
+    padding: 0 $container-padding;
+    #{$className}-info-display-box-content-maininfo {
+      font-weight: 500;
+      margin: 15px 0;
+      @include xo-title(#000, 16px);
+      @include ellipsis(1);
+      &:hover {
+        #{$className}-poptip {
+          visibility: visible;
+        }
+      }
+    }
+    #{$className}-info-display-box-content-subinfo {
+      @include xo-simple-lt-div;
+      height: $xo-font-sm;
+      margin-bottom: 15px;
+      @include xo-title($xo-color-gray-deep, $xo-font-sm);
+    }
+  }
+
+}
+
+#{$className}-info-display-box-260 {
+  @include xo-info-block($width: 100%, $contentHeight: 115px, $imgHeight: 145px, $bg: $xo-color-white, $border: 1px solid $xo-color-gray, $img-selector: #{$className}-info-display-box-img);
+}
+#{$className}-info-display-box-180 {
+  @include xo-info-block($width: 100%, $contentHeight: 60px, $imgHeight: 120px, $bg: $xo-color-white, $border: 1px solid $xo-color-gray, $img-selector: #{$className}-info-display-box-img);
+}
+
+/* 单行信息条（例如查看全部）*/
+#{$className}-section-footer {
+  @include center-block;
+  display: block;
+  text-align: center;
+  @include xo-title($xo-color-gray-deep, $xo-font-sm);
+}
+
+/* 通用的三栏布局 */
+#{$className}-orgShell-body-sidebar-layout-main-inner > #{$className}-common-main-section-content {
+  @include xo-layout-float ( $width:875px , $height: 260px, $col: 3, $gap: 20px, $bottom: 20px, $item-selector: #{$className}-common-main-section-content-item, $clearfix: false );
+  height: 260px;
+}

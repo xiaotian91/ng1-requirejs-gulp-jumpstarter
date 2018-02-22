@@ -1,0 +1,120 @@
+/* 栅格系统 */
+
+
+// 固定网格变量
+// 这里设计的是1200px的布局，每个栅格为80px，共12个，计算公式：(80+20)*12 = 1200
+//----------------------------------------------------- 
+$gridColumnWidth:                 80px;   // Width of a single column
+$gridGutter:                      20px;    // Width of the gutter
+
+
+// 开关
+// ----------------------------------------
+$gridSpanSwitch:                  true;
+$gridMaskSwitch:                  false;
+
+
+@import '../mixins/xo-sass/src/fixedgrid';
+
+$header-height: 50px;
+$header-offset: 35px;
+
+#{$className}-fixedgrid-container {
+  @include wrapper($row-selector: #{$className});
+}
+
+
+.title-highlight {
+  font-size: 20px;
+  color: $xo-color-primary;
+  margin-top: 0;
+  padding-bottom: 15px;
+}
+
+body#{$className}-bg {
+  background: $xo-color-gray-light;
+}
+
+#{$className}-fullpage-wrapper {
+  @include xo-fullpage-container(url($pic-backgrounds + '/bg.jpg'));
+  #{$className}-header {
+    width: 100%;
+    height: $header-height;
+    background: $xo-color-white;
+    position: absolute;
+    top: 0;
+    & > #{$className}-header-brand {
+      float: left;
+      padding-left: $header-offset;
+      height: $header-height;
+      line-height: $header-height;
+    }
+    & > #{$className}-header-actions {
+      float: right;
+      padding-right: $header-offset;
+      height: $header-height;
+      line-height: $header-height;
+      span, a {
+        color: $xo-color-gray-deep;
+      }
+    }
+  }
+}
+
+/*  九宫格布局 */
+#{$className}-sudoku-wrapper {
+  $size: 280px;
+  $imgOffsets: 10px; // 偏移量腾出空间给图片下面的文字
+  @include size($size, $size);
+  @include center-block;
+  @include sudoku( $width: $size, $gap: 5px, $className: '.grid', $showMask: false);
+  & > .grid {
+    position: relative;
+    top: -$imgOffsets*2;
+    padding: 0;
+  }
+  & > .grid > li {
+    position: relative;
+    padding-bottom: $imgOffsets; // 偏移量腾出空间给图片下面的文字
+    $imgSize: 76px;
+    & > div > div:first-child img {
+      @include size($imgSize, $imgSize);
+    }
+
+    & > div > div:nth-child(2) {
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      top: $imgSize + 20px;
+
+      h2 { // 文字截断
+        font-size: $xo-font-sm;
+        @include ellipsis(1);
+      }
+    }
+  }
+}
+
+/* 固定宽度选项卡布局 */
+#{$className}-fixed-tabpanel {
+  & > ul {
+    padding: 0;
+
+    &  > li {
+      border-top: 3px solid transparent;
+      background: #e5e5e5;
+    }
+    &  > li.on {
+      border-top: 3px solid $xo-color-primary;
+      background: $xo-color-white !important;
+    }
+
+  }
+}
+#{$className}-fixed-tabpanel#{$className}-fixed-tabpanel-2cols {
+  @include xo-fixed-tab-panel($width: 100%, $tabHeight: 50px, $panelHeight: 450px, $fontSize: 18px, $tabCount:2);
+}
+#{$className}-fixed-tabpanel#{$className}-fixed-tabpanel-3cols {
+  @include xo-fixed-tab-panel($width: 100%, $tabHeight: 50px, $panelHeight: 450px, $fontSize: 18px, $tabCount:3);
+}
+

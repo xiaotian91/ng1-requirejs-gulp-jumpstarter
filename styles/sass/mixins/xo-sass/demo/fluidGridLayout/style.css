@@ -1,0 +1,115 @@
+.two-columns,
+.six-columns,
+.varying-columns,
+.nested-columns,
+.more-nested-columns,
+.offset-columns {
+  *zoom: 1; }
+  .two-columns:before,
+  .six-columns:before,
+  .varying-columns:before,
+  .nested-columns:before,
+  .more-nested-columns:before,
+  .offset-columns:before, .two-columns:after,
+  .six-columns:after,
+  .varying-columns:after,
+  .nested-columns:after,
+  .more-nested-columns:after,
+  .offset-columns:after {
+    content: "";
+    display: table; }
+  .two-columns:after,
+  .six-columns:after,
+  .varying-columns:after,
+  .nested-columns:after,
+  .more-nested-columns:after,
+  .offset-columns:after {
+    clear: both; }
+
+.two-columns,
+.six-columns,
+.varying-columns,
+.nested-columns,
+.more-nested-columns,
+.offset-columns {
+  *zoom: 1; }
+  .two-columns:before,
+  .six-columns:before,
+  .varying-columns:before,
+  .nested-columns:before,
+  .more-nested-columns:before,
+  .offset-columns:before, .two-columns:after,
+  .six-columns:after,
+  .varying-columns:after,
+  .nested-columns:after,
+  .more-nested-columns:after,
+  .offset-columns:after {
+    content: "";
+    display: table; }
+  .two-columns:after,
+  .six-columns:after,
+  .varying-columns:after,
+  .nested-columns:after,
+  .more-nested-columns:after,
+  .offset-columns:after {
+    clear: both; }
+
+.wrapper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0; }
+
+.two-columns,
+.six-columns,
+.varying-columns,
+.nested-columns,
+.more-nested-columns,
+.offset-columns {
+  width: 100%;
+  max-width: false;
+  margin: 0 auto;
+  padding: 0; }
+  .two-columns > div,
+  .six-columns > div,
+  .varying-columns > div,
+  .nested-columns > div,
+  .more-nested-columns > div,
+  .offset-columns > div {
+    float: left;
+    margin-right: 2%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+.two-columns {
+  background-color: #666;
+  margin-bottom: 1em; }
+  .two-columns div {
+    background-color: #333;
+    width: 49%; }
+  .two-columns .right-column {
+    margin-right: 0;
+    float: right; }
+
+.six-columns {
+  background-color: #666;
+  margin-bottom: 1em; }
+  .six-columns div {
+    background-color: #333;
+    width: 15%; }
+  .six-columns div:last-child {
+    margin-right: 0;
+    float: right; }
+
+.offset-columns {
+  background-color: #666;
+  margin-bottom: 1em; }
+  .offset-columns div {
+    background-color: #333; }
+  .offset-columns .first-offset {
+    width: 32%; }
+  .offset-columns .second-offset {
+    width: 6.5%; }
+
+/*# sourceMappingURL=style.css.map */

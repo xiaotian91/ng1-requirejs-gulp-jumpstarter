@@ -1,0 +1,67 @@
+//
+// Fluid Grid
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 流式网格布局 , 基于`(65+20)*12 - 20 = 1000px`计算 
+
+// 依赖于 variables, util, compatibility
+@import "./variables";
+@import "./util";
+@import "./compatibility";
+
+$column-width: 6.5% !default;
+$gutter-width: 2% !default;
+$maximum-columns: 12 !default;
+
+// 创建栅格列容器
+@function columns($columns, $container-columns: $maximum-columns) {
+	$width: $columns*$column-width + ($columns - 1)*$gutter-width;
+	$container-width: $container-columns*$column-width+($container-columns - 1)*$gutter-width;
+	@return percentage($width/$container-width);
+}
+
+@function gutter($container-columns: $maximum-columns, $gutter: $gutter-width) {
+	$container-width: $container-columns*$column-width+($container-columns - 1)*$gutter-width;
+	@return percentage($gutter/$container-width);
+}
+
+// 创建栅格外部容器
+@mixin row($max-width: false) {
+	width: 100%;
+	max-width: $max-width;
+	margin: 0 auto;
+	@include clearfix();
+	@include nesting;
+}
+
+@mixin nesting {
+	padding: 0;
+	& > div {
+		float: left;
+		margin-right: gutter();
+		@include box-sizing(border-box);
+	}
+}
+
+@function offset-columns($columns) {
+  $margin: $columns * $column-width + $columns * $gutter-width;
+  @return $margin;
+}
+
+// 栅格列的偏移
+@mixin offset($from-direction, $columns) {
+  @if $from-direction == left {
+    float: left;
+    margin-left: offset-columns($columns);
+  }
+  @if $from-direction == right {
+    float: right;
+    margin-right: offset-columns($columns);
+  }
+}
+
+@mixin last {
+  margin-right: 0;
+  float: right;
+}

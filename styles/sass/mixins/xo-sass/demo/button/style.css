@@ -1,0 +1,43 @@
+.ydwl-btn-primary {
+  color: #000;
+  background-color: #F1B913;
+  border: 1px solid #dda90d;
+  border-color: #f2bc1d #dda90d #dda90d #f2bc1d; }
+  .ydwl-btn-primary:hover {
+    background-color: #dda90d;
+    color: #000; }
+
+.ydwl-btn-blue {
+  color: #000;
+  background-color: #00A3CF;
+  border: 1px solid #008fb6;
+  border-color: #00abd9 #008fb6 #008fb6 #00abd9; }
+  .ydwl-btn-blue:hover {
+    background-color: #008fb6;
+    color: #000; }
+
+.ydwl-btn-slim-lg {
+  width: 200px;
+  height: 25px; }
+
+.ydwl-btn-slim-md {
+  width: 100px;
+  height: 25px; }
+
+.ydwl-btn-slim-sl {
+  width: 80px;
+  height: 25px; }
+
+.ydwl-btn-fat-lg {
+  width: 200px;
+  height: 40px; }
+
+.ydwl-btn-fat-md {
+  width: 100px;
+  height: 40px; }
+
+.ydwl-btn-fat-sl {
+  width: 80px;
+  height: 40px; }
+
+/*# sourceMappingURL=style.css.map */

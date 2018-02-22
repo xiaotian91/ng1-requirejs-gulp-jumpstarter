@@ -1,0 +1,24 @@
+@import "../../src/variables";
+@import "../../src/compatibility";
+@import "../../src/util";
+@import "../../src/layout";
+
+body {
+	margin: 0;
+}
+
+.wrapper {
+	@include sfc-layout-page(980px);
+	height: 410px;
+	padding: 10px;
+	background: #666;
+
+	.sfc-float-row {
+		@include sfc-layout-float( $width: 980px, $height: false, $col: 3, $gap: 10px, $bottom: 10px, $item-selector: '.sfc-float-item');
+	}
+
+	.sfc-float-item {
+		background: white;
+		height: 200px;
+	}
+}

@@ -1,0 +1,347 @@
+//
+// Layout
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 常用基础布局
+
+// 依赖于 variables, util, compatibility
+
+@import "variables";
+@import "util";
+@import "compatibility";
+
+//
+// ## fixed header with specified height
+//
+// ### Example:
+//
+// #page {
+//     @include xo-layout-fixed-header(90px);
+// }
+
+@mixin xo-layout-header($isFixed: false, $height: 55px, $bg: white,  $offset: 15px, $header-selector: '.xo-fixed-header', $body-selector: '.xo-fixed-body', $lf-section-selector: '.xo-fixed-header-lf', $rt-section-selector: '.xo-fixed-header-rt', $hasSubHeader: false, $subHeader-selector: '.xo-fixed-header-subheader', $subBg: black) {
+	%h {
+		height: $height;
+		line-height: $height;
+	}
+	%fixed-to-top {
+		left: 0;
+		width: 100%;
+		z-index: $header-z-index;
+	}
+	$ratio: 1.5;
+
+	& > #{$header-selector} {
+		@extend %fixed-to-top;
+
+		@if $isFixed {
+			position: fixed;
+		} @else {
+			position: relative;
+		}
+
+		top: 0;
+		height: $height;
+		background: $bg;
+
+		& > #{$lf-section-selector} {
+			float: left;
+			padding-left: $offset;
+			@extend %h;
+		}
+
+		& > #{$rt-section-selector} {
+			float: right;
+			padding-right: $offset;
+			@extend %h;
+		}
+
+
+	}
+
+	@if $isFixed {
+		& > #{$body-selector} {
+			margin-top: $height + ($height / $ratio);
+			@extend %clearfix;
+		}
+	}
+
+	@if hasSubHeader {
+
+		& > #{$subHeader-selector} {
+			@extend %fixed-to-top;
+			@if $isFixed {
+				position: fixed;
+				top: $height;
+			} @else {
+				position: relative;
+				top: 0;
+			}
+			height: $height / $ratio;
+			background: $subBg;
+		}
+	} @else {
+		& > #{$body-selector} {
+			margin-top: $height;
+		}
+	}
+}
+
+//
+// ## fixed footer with specified height
+//
+// ### Example:
+//
+// #page {
+//     @include xo-layout-fixed-footer(90px);
+// }
+
+@mixin xo-layout-fixed-footer($height: 55px, $bg: white, $footer-selector: '.xo-footer', $body-selector: '.xo-body') {
+	& > #{$footer-selector} {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: $footer-z-index;
+		height: $height;
+		background: $bg;
+	}
+
+	& > #{$body-selector} {
+		margin-bottom: $height;
+		@extend %clearfix;
+	}
+}
+
+//
+// ## Centered layout with specified width
+//
+// ### Example:
+//
+// #page {
+//     @include xo-layout-page();
+// }
+//
+// ### Known issue:
+// Under IE's quirks mode, the parent element's `text-align` should be set to `center` and be reset to `left` on current element.
+
+@mixin xo-layout-page($page-width) {
+	width: $page-width;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+//
+// ## Sidebar with specified width
+// One optional sidebar with given width on each side and the main section take all of the rxo width.
+//
+// ### Example:
+//
+// // Left sidebar
+// #page1 {
+//     @include xo-layout-sidebar(left, 220px);
+// }
+//
+// // Right sidebar
+// #page2 {
+//     @include xo-layout-sidebar(right, 220px);
+// }
+//
+// // Left sidebar being 220px wide and right sidebar being 180px wide
+// #page3 {
+//     @include xo-layout-sidebar(220px, 180px);
+// }
+
+@mixin xo-layout-sidebar($pos, $sidebar-width, $main-selector: ".xo-main", $sidebar-selector: ".xo-sidebar", $gap: 0) {
+    position: relative;
+    %c {
+    	position: absolute;
+	    top: 0;
+	    width: $sidebar-width;
+    	height: 100vh;
+    }
+
+    @if $pos == left {
+    	& > #{$main-selector} {
+	        overflow: hidden;
+	        margin-left: $sidebar-width + $gap;
+	    }
+
+	    & > #{$sidebar-selector} {
+	    	@extend %c;
+	        left: 0;
+	    }
+    }
+    @if $pos == right {
+    	& > #{$main-selector} {
+	        overflow: hidden;
+	        margin-right: $sidebar-width + $gap;
+	    }
+
+	    & > #{$sidebar-selector} {
+	    	@extend %c;
+	        right: 0;
+	    }
+    }
+    
+}
+
+//
+// # Horizontal lists
+//
+// Turn lists into horizontal layout for menus or so
+// Should apply to the wrapper outside a list
+
+@mixin xo-layout-horizontal-list($gap,$direction:left) {
+	overflow: hidden;
+	%defaultStyleClear {
+		list-style: none;
+		padding: 0;
+	}
+	@if $direction == left {
+		ul,
+		ol {
+			@extend %defaultStyleClear;
+			float: left;
+			margin-left: -$gap;
+			li {
+				float: left;
+				margin-left: $gap;
+			}
+		}
+	}
+
+	@if $direction == right {
+		ul,
+		ol {
+			@extend %defaultStyleClear;
+			float: right;
+			margin-right: -$gap;
+			li {
+				float: left;
+				margin-right: $gap;
+			}
+		}
+	}
+	
+
+	@if $support-ie-version < 7 {
+		ul,
+		ol,
+		li {
+			_display: inline;
+		}
+	}
+}
+
+//
+// # 最早的一栏、二栏、三栏布局，Float实现
+//
+
+
+@mixin xo-layout-float ( $width, $height: false, $col: 3, $gap: 10px, $bottom: 10px, $item-selector: '.xo-float-item', $clearfix: false ) {
+	
+	$col-width: ($width - $gap * ($col - 1 )) / $col;
+	& > #{$item-selector} {
+		width: $col-width;
+		@include box-sizing(border-box);
+		@if $height == false {
+			height: $col-width * 2 / 3
+		} 
+		@else {
+			height: $height;
+		}
+
+		margin-right: $gap;
+		margin-bottom: $bottom;
+		@include float(left);		
+	}
+	& > #{$item-selector}:nth-child(3n){
+		margin-right: 0;
+	}
+}
+
+//
+// # 绝对居中，垂直居中＋横向居中
+//
+
+@mixin xo-layout-absolute-center ( $option: false, $offset: 20px ) {
+	width: 50%;
+  	height: 50%;
+  	margin: auto;
+  	position: absolute;
+  	top: 0; left: 0; bottom: 0; right: 0;
+
+  	@if $option == right {
+  		left: auto; right: $offset;
+  		text-align: right;
+  	}
+
+  	@if $option == left {
+  		left: $offset; right: auto;
+  		text-align: left;
+  	}
+
+  	@if $option == fixed {
+  		position: fixed;
+  		z-index: 9999;
+  	}
+}
+
+//
+// # 未知高度图片垂直居中
+//
+
+@mixin xo-image-vertical-center ($height: 50px) {
+	height: $height;
+	line-height: $height;
+	%a {
+		@include inline-block;
+		vertical-align: middle;
+	}
+	& img {
+		@extend %a;
+	}
+	& img + * {
+		@extend %a;
+		//height:100%;
+	}
+}
+
+//
+// # 常规信息块（图片在上，文字内容在下）
+//
+
+@mixin xo-info-block($width: 100%, $contentHeight: 60px, $imgHeight: 120px, $bg: white, $border: 1px solid #333, $img-selector: '.xo-img-container') {
+		width: $width;
+		height: $contentHeight + $imgHeight;
+		border: $border;
+		background: $bg;
+
+		& > #{$img-selector} {
+			position: relative;
+			width: 100%;
+			height: $imgHeight;
+			overflow: hidden;
+			img {
+				max-width: 100%;_width:100%;
+			}
+		}
+}
+
+
+//
+// # 2个div 左右Float
+//
+
+@mixin xo-simple-lt-div() {
+	& > *:first-child {
+		@include float(left);
+		@include inline-block;
+	}
+	& > *:nth-child(2) {
+		@include float(right);
+		@include inline-block;
+	}
+}

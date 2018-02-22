@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>shapes</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="hexContainer">
+			<div class="hexagon">
+	            <div class="hexagonS">
+	                <div class="hexagonT">
+	                	<div class="hexagonInner">
+	                		<div id="searchArea" style="display: block; position: absolute; top: 50%;">
+	                			<input type="text">
+						        <select name="searchArea--resourceOpts" id="searchArea-resourceOpts">
+						            <option value="">图片</option>
+						            <option value="">文字</option>
+						            <option value="">音频</option>
+						            <option value="">视频</option>
+						            <option value="">乐谱</option>
+						        </select>
+						        <button>搜索</button>
+	                		</div> 	
+					    </div>	     
+	                </div>
+	            </div>
+	        </div>
+	        <div class="hexagon-shadow">
+	            <div class="hexagonS">
+	                <div class="hexagonT"></div>
+	            </div>
+	        </div>
+		</div>
+		<div class="hexContainer" style="left: 220px; top: 110px;">
+			<div class="hexagon">
+	            <div class="hexagonS">
+	                <div class="hexagonT">
+	                	<div id="coolImage" class="hexagonInner">
+	                		<div class="mask"><a href="#">+view</a></div>
+	                	</div>	     
+	                </div>
+	            </div>
+	        </div>
+	        <div class="hexagon-shadow">
+	            <div class="hexagonS">
+	                <div class="hexagonT"></div>
+	            </div>
+	        </div>
+		</div>
+		<div class="hexContainer" style="left: 440px;">
+			<div class="hexagon">
+	            <div class="hexagonS">
+	                <div class="hexagonT">
+	                	<div id="lovelinImage" class="hexagonInner">
+	                		<div class="mask"><a href="#">+</a></div>
+	                	</div>	     
+	                </div>
+	            </div>
+	        </div>
+	        <div class="hexagon-shadow">
+	            <div class="hexagonS">
+	                <div class="hexagonT"></div>
+	            </div>
+	        </div>
+		</div>
+		<div class="hexContainer" style="left: 660px; top: 110px">
+			<div class="hexagon">
+	            <div class="hexagonS">
+	                <div class="hexagonT">
+	                	<div id="gogoingImage" class="hexagonInner">
+	                		<div class="mask"><a href="#">+</a></div>
+	                	</div>	     
+	                </div>
+	            </div>
+	        </div>
+	        <div class="hexagon-shadow">
+	            <div class="hexagonS">
+	                <div class="hexagonT"></div>
+	            </div>
+	        </div>
+		</div>
+	</div>
+	<!--script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.js"></script-->
+	<script>
+		window.onload = function() {
+			for (var i = 0, l; l = ['cool', 'lovelin', 'gogoing'][i++];) {
+				document.getElementById(l + 'Image').style.backgroundImage = 'url(img/' + l + '.jpeg)';
+			}
+		}
+
+		/*
+		$(function(){
+			for (var i = 0, l; l = ['cool', 'lovelin', 'gogoing'][i++];) {
+				$('#' + l + 'Image').css('background-image', 'url(img/' + l + '.jpeg)');
+			}
+		})
+		*/
+		
+	</script> 
+</body>
+</html>

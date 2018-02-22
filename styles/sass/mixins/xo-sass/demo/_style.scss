@@ -1,0 +1,88 @@
+@import '../src/all';
+
+html {
+	font-size: $default-font-size;
+}
+
+.a {
+	width: 100px;
+	border: 1px solid black;
+	background: #666;
+}
+
+.b {
+	width: 100pt;
+	background: #666;
+}
+#page {
+	@include sfc-layout-fixed-header(80px, '.fixed-header', '.content');
+	@include sfc-layout-fixed-footer(60px, '.fixed-footer', '.content');
+	& > .fixed-header,
+	& > .fixed-footer {
+		background: #4C9ED9;
+	}	
+}
+.container {
+	@include sfc-layout-page(960px);
+	@include sfc-layout-sidebar(left, 220px);
+	background: #666;
+}
+
+.user {
+	@include sfc-layout-horizontal-list(5px);
+}
+
+.header {
+    @include emCalc(line-height, 30, 16);
+    @include emCalc(width height, 125);
+    @include emCalc(padding, 0 25, 16);
+    @include emCalc(text-shadow, (#0d6e28 1 1) (#777 0 0 2), 16);
+    @include emCalc(box-shadow, (inset 0 0 0 1 #2a9022) (inset 0 0 3 #459966), 16);
+    font-size: pxToem(12);
+}
+
+.circle {
+	@include circle(20px, url(img/texture.png) lightgreen no-repeat center center);
+}
+
+.hide-text {
+	@include hide-text();
+}
+
+.invisible {
+	@include invisible();
+}
+.comment {
+	@include force-wrap();
+}
+.comment:after {
+	@extend %triangle-basic;
+	@include triangle( left, 15px, red );
+}
+
+@each $boxmodel in padding, content, border {
+	.#{$boxmodel}-box {
+		@include box-sizing($boxmodel + '-box');
+		@include inline-block();
+		@include font-family( heading );
+		padding: 20px;
+		border: 5px solid black;
+	}
+}
+
+code {
+	@include font-family( code );
+}
+
+.logo {
+	@include hide-text();
+	width: 200px;
+	height: 100px;
+	background: url(http://www.baidu.com/img/bdlogo.gif) no-repeat -30px 0;
+}
+
+.cell {
+	width: 120px;
+	font-size: toRem(20px);
+	@include ellipsis(3);
+}

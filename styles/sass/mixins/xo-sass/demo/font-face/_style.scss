@@ -1,0 +1,29 @@
+$fontFamily:          IcoMoon;
+$fontFilePath:          "fonts/icomoon";
+$fontClassoutput:pen pacman floder user;
+
+$fontClassAll: 
+				pencil2  "\e906",
+
+				pen   "\e908",
+
+				pacman   "\e916",
+
+				library   "\e921",
+
+				floder   "\e92f",
+
+				user   "\e971",
+
+				spinner6   "\e97f";
+
+@import '../../src/layout';
+@import '../../src/typography';
+@import '../../src/font-face/index';
+
+.nav {
+	@include sfc-layout-horizontal-list(12px);
+	a {
+		@include unstyled-link();
+	}
+}

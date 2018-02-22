@@ -1,13 +1,55 @@
 <div class="jumbotron text-center">
-    <h1>你好</h1>
-    <p>这是一个结合Angular 1.0 + Gulp + RequireJs + Bootstrap 3.0的种子项目。</p>
-    <p ng-hide="loggedIn"><a class="btn btn-primary btn-lg" href="#/login" role="button">登录 &raquo;</a></p>
-    <p class="text-success" ng-show="loggedIn">
-        欢迎，{{profile.name||profile.email}}，您已经成功登录！<br>
-        <a class="btn" ui-sref="login" >登录模块 &raquo;</a>
-        <a class="btn" ui-sref="utilsDemo">xo-utils demos &raquo;</a>
-        <a class="btn" ui-sref="inputsDemo">Inputs组件实例 &raquo;</a>
-        <a class="btn" ui-sref="dataService">接口 &raquo;</a>
-    </p>
-    <button class="btn" ng-click="openT()">打开一个Bootstrap弹出框</button>
+    <div class="xo-orgShell-container">
+        <div class="xo-orgShell-header">
+            <div class="xo-orgShell-header-lf xo-pointer">
+                <img src="../styles/themes/theme-byl/img/logo.png"  />
+                <!-- 为了垂直居中未知高度的图片 --><p></p>
+            </div>
+            <div class="xo-orgShell-header-rt">
+                <div class="xo-searchbox">
+                    <input type="text" placeholder="请输入搜索">
+                    <div>
+                        <i class="glyphicon glyphicon-search"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="xo-dropdown-menu-container">
+                        <span class="xo-pointer xo-dropdown-trigger">Xiaotian</span>
+                        <div class="xo-dropdown-menu">
+                            <div class="xo-dropdown-menu-arrow"></div>
+                            <ul>
+                                <li>item1</li>
+                                <li>item2</li>
+                                <li>item3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="xo-pointer">注销</span>
+                </div>
+            </div>
+        </div>
+        <div class="xo-orgShell-header-subhead">
+            <div>
+                <ul>
+                    <li class="xo-orgShell-menu on xo-pointer">menu1</li>
+                    <li class="xo-pointer">menu2</li>
+                    <li class="xo-pointer">menu3</li>
+                    <li class="xo-pointer">menu4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="xo-orgShell-body">
+            <h1>你好</h1>
+            <p>这是一个结合Angular 1.0 + Gulp + RequireJs + Bootstrap 3.0的种子项目。</p>
+            <p ng-hide="loggedIn"><a class="btn btn-primary btn-lg" href="#/login" role="button">登录 &raquo;</a></p>
+            <p class="text-success" ng-show="loggedIn">
+                欢迎，{{profile.name||profile.email}}，您已经成功登录！<br>
+                <a class="btn" ui-sref="login" >登录模块 &raquo;</a>
+                <a class="btn" ui-sref="utilsDemo">xo-utils demos &raquo;</a>
+                <a class="btn" ui-sref="inputsDemo">Inputs组件实例 &raquo;</a>
+                <a class="btn" ui-sref="dataService">接口 &raquo;</a>
+            </p>
+            <button class="btn" ng-click="openT()">打开一个Bootstrap弹出框</button>
+        </div>
+    </div>
 </div>

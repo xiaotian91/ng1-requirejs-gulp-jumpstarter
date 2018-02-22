@@ -1,0 +1,47 @@
+@charset "UTF-8";
+//-----------------------------------------------------	
+// animate scss
+// 支持ie8+
+//-----------------------------------------------------
+
+
+// 导入依赖文件
+@import "./animate";
+
+// barLoader
+@mixin barLoader () {
+  @include keyframes(barLoader, webkit moz){
+    0%,
+  80%,
+  100% {
+      box-shadow: 0 0 #FFF;
+      height: 4em;
+  }
+  40% {
+      box-shadow: 0 -2em #ffffff;
+      height: 5em;
+  }
+  }
+  & {
+    @include animation(barLoader 1s infinite ease-in-out, webkit moz);
+    // @include animation-name(barLoader);
+    // @include animation-iteration-count(infinite);
+    // @include animation-timing-function(ease-in-out);
+    // @extend %animated;
+  }
+}
+
+// circleLoader
+@mixin circleLoader ($animations...) {
+  @include keyframes(circleLoader, webkit moz) {
+    0% {
+      @include rotate(0deg);
+    }
+    100% {
+      @include rotate(360deg);
+    }
+  }
+  & {
+    @include animation(circleLoader $animations);
+  }
+}

@@ -5,6 +5,7 @@ var gulpif = require('gulp-if');
 var htmlreplace = require('gulp-html-replace');
 var concat = require('gulp-concat');
 var cssimport = require("gulp-cssimport");
+var cleancss = require('gulp-clean-css');
 var assetRev = require('gulp-asset-rev');
 var runSequence = require('run-sequence');
 var rev = require('gulp-rev');
@@ -17,12 +18,14 @@ var inject = require('gulp-inject');
 var gzip = require('gulp-gzip');
 var del = require('del');
 var sass = require('gulp-ruby-sass');
+var base64 = require('gulp-base64');
+var base64html = require('gulp-img64');
 var filter = require('gulp-filter');
 var browserSync = require('browser-sync').create();
 var mock = require('./mock');
 var config = require('./gulp-config');
 
-var cssSrc = './dist/styles/index.css'; // 打包生成的css文件
+var cssSrc = ['./dist/styles/*.css', './dist/styles/**/*.css']; // 打包生成的css文件
 var jsSrc = './dist/*.js'; // 打包生成的js文件
 
 var knownOptions = {
@@ -33,14 +36,19 @@ var knownOptions = {
 };
 var options = minimist(process.argv.slice(2), knownOptions);
 
+// 将html里的图片转换为base64编码
+gulp.task('base64html', function() {
+    return gulp.src(['./modules/**/*.html'])
+        .pipe(base64html())
+        .pipe(gulp.dest('tmp'));
+});
 
 //合并html模板命令--gulp template
-gulp.task('template', function() {
-    return gulp.src(['modules/**/*.html', 'components/**/*.html'])
+gulp.task('template', ['base64html'], function() {
+    return gulp.src(['./tmp/**/*.html', './components/**/*.html'])
         .pipe(htmlmin())
         .pipe(ngHtml2js({
             moduleName: 'template-app'
-
         }))
         .pipe(concat('template.tpl.js'))
         .pipe(gulp.dest('tmp'));
@@ -140,8 +148,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    return gulp.src('./styles/index.css') // 只需要集合css文件
+    return gulp.src(config.deploySrc, {base: './styles'})
         .pipe(cssimport())
+        .pipe(cleancss({compatibility: 'ie8'}))
         .pipe(gulp.dest('dist/styles'));
 });
 
@@ -151,8 +160,7 @@ gulp.task('clean', function() {
     })
 });
 
-gulp.task('watch', ['sass'], function() {
-    var src = config.watchFiles;
+gulp.task('watch', function() {
     browserSync.init({
         server: {
             baseDir: './',
@@ -161,17 +169,19 @@ gulp.task('watch', ['sass'], function() {
             middleware: mock.data()
         }
     });
-    var watcher = gulp.watch(src, {cwd: './'}, ['clean', 'template']);
+    var watcher = gulp.watch(config.watchFiles, {cwd: './'}, ['template']);
     watcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         browserSync.reload();
     });
-
-    gulp.watch('./styles/sass/*.scss', ['sass']);
+    gulp.watch(config.sassFiles, ['sass']);
 });
 
 gulp.task('sass', function() {
-    return sass(['./styles/sass/**/*.scss'], {sourcemap: true})
+    return sass(config.sassFiles, {sourcemap: true})
+        .pipe(base64({
+            maxImageSize: 0
+        }))
         .pipe(gulp.dest('./styles/css'))
         .pipe(filter('./styles/**/*.css'))
         .pipe(browserSync.reload({stream: true}));
@@ -180,13 +190,14 @@ gulp.task('sass', function() {
 //开发构建
 gulp.task('default', function(done) {
     if (options.env == 'production') {
-        condition = false;
         runSequence( //需要说明的是，用gulp.run也可以实现以上所有任务的执行，只是gulp.run是最大限度的并行执行这些任务，而在添加版本号时需要串行执行（顺序执行）这些任务，故使用了runSequence.
             ['clean'],
             //['assetRev'],
+            ['base64html'],
             ['template'], 
             ['ngModules'], 
-            ['js'], 
+            ['js'],
+            ['sass'],
             ['css'], 
             ['revCss'], 
             ['revJs'], 
@@ -194,6 +205,12 @@ gulp.task('default', function(done) {
             ['revHtml'],
             done);
     } else if ( options.env == 'development') {
-        gulp.run(['clean', 'template', 'inject', 'watch']);
+        runSequence(
+            ['clean'],
+            ['template'],
+            ['sass'],
+            ['inject'],
+            ['watch'],
+        done);
     }
 });

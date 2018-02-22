@@ -1,0 +1,155 @@
+//
+// Shapes
+// -----------------------------------------------------------------------------
+//
+// ### Usage:
+// 提供常见形状的生成
+
+@import "./variables";
+@import "./util";
+
+// 
+// triangle 三角形
+// -------------------------
+
+/*
+ * $edge: 三角形底边
+ * $height: 三角形高
+ */
+@mixin triangle($direction, $edge, $height, $color ) {
+  
+  %triangle-basic{
+    position: absolute;
+    content:"";
+    height: 0;
+    width: 0;
+    overflow:hidden;
+  }
+  @extend %triangle-basic;
+
+  @if $direction == up {
+    border-bottom: $height solid $color;
+    border-left: $edge/2 dashed transparent;
+    border-right: $edge/2 dashed transparent;
+  } 
+  @else if $direction == right {
+    border-left: $height solid $color;
+    border-top: $edge/2 dashed transparent;
+    border-bottom: $edge/2 dashed transparent;
+  } 
+  @else if $direction == down {
+    border-top: $height solid $color;
+    border-left: $edge/2 dashed transparent;
+    border-right: $edge/2 dashed transparent;
+  } 
+  @else if $direction == left {
+    border-right: $height solid $color;
+    border-top: $edge/2 dashed transparent;
+    border-bottom: $edge/2 dashed transparent;
+  }
+}
+// 等边三角形
+@mixin equilateral-triangle( $side, $color ) {
+  $altitude: $side*(sqrt(5)/2)/2;
+  width: 0;
+  height: 0;
+  border: $side solid transparent;
+  border-bottom-color: $color;
+  border-left-width: $altitude;
+  border-right-width: $altitude;
+}
+
+// 
+// circle 圆形
+// -------------------------
+
+@mixin circle($size, $bg:false, $border: false) {
+  @if unit($size) == 'px' {
+    width: $size;
+    height: $size;
+    @include border-radius(ceil($size) / 2);
+  }
+  @if unit($size) == '%' {
+    width: $size;
+    padding-top: $size;
+    @include border-radius(50%);
+  }
+
+  @if type-of($bg) == 'color' {
+    background-color: $bg;
+  }
+
+  @if not($bg == false) and not(type-of($bg) == 'color') {
+    background: $bg;
+  }
+
+  @if $border {
+    border: $border;
+  }
+}
+
+
+
+// 
+// hexagon 六角形可以带图片、阴影
+// 支持2种方向： vertical和horizontal
+// -------------------------
+
+@mixin hexagon( $width, $color: #fcfcfc, $direction: vertical, $second-selector: '.hexagonS', $third-selector: '.hexagonT', $inner-selector: '.hexagonInner', $offset: 125px ) {
+
+  &,
+  & > #{$second-selector},
+  & > #{$second-selector} > #{$third-selector},
+  & > #{$second-selector} > #{$third-selector} > #{$inner-selector} {
+    width: $width;
+    height: $width * 1.25;
+    background-color: $color !important;
+    overflow: hidden;
+  }
+
+  &, & > #{$second-selector} {
+    visibility: hidden;
+  }
+
+
+  & > #{$second-selector} {
+    @include rotate(-60deg);
+  }
+
+  & > #{$second-selector} > #{$third-selector} {
+    @include rotate(-60deg);
+    background: no-repeat 50% center;
+    background-size: 125% auto;
+    visibility: visible;
+  }
+
+  %bg-basic {
+    background: no-repeat 50% center;
+    background-size: 90% auto;
+  }
+
+  @if $direction == vertical {
+      & {
+        @include rotate(120deg);
+        float: left;
+      }
+      & > #{$second-selector} > #{$third-selector} > #{$inner-selector} {
+        @extend %bg-basic;
+      }
+  }
+
+  @if $direction == horizontal {
+
+      & {
+        @include rotate(90deg);
+        float: left;
+      }
+
+      & > #{$second-selector} > #{$third-selector} > #{$inner-selector} {
+        @include rotate(30deg);
+        @extend %bg-basic;      
+      }
+
+  }
+
+}

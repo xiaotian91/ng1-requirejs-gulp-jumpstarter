@@ -1,0 +1,24 @@
+body {
+  margin: 0; }
+
+.wrapper {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 410px;
+  padding: 10px;
+  background: #666; }
+  .wrapper .sfc-float-row > .sfc-float-item {
+    width: 320px;
+    height: 213.33333px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    display: inline; }
+  .wrapper .sfc-float-row > .sfc-float-item:last-child {
+    margin-right: 0; }
+  .wrapper .sfc-float-item {
+    background: white;
+    height: 200px; }
+
+/*# sourceMappingURL=style.css.map */

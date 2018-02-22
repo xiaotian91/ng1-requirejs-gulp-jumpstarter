@@ -1,0 +1,96 @@
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  margin-right: 20px; }
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  background-color: rgba(240, 128, 128, 0.5);
+  height: inherit;
+  position: relative;
+  z-index: 3; }
+
+.col-1 {
+  float: left;
+  display: inline;
+  width: 65px; }
+
+.col-2 {
+  float: left;
+  display: inline;
+  width: 150px; }
+
+.col-3 {
+  float: left;
+  display: inline;
+  width: 235px; }
+
+.col-4 {
+  float: left;
+  display: inline;
+  width: 320px; }
+
+.col-5 {
+  float: left;
+  display: inline;
+  width: 405px; }
+
+.col-6 {
+  float: left;
+  display: inline;
+  width: 490px; }
+
+.col-7 {
+  float: left;
+  display: inline;
+  width: 575px; }
+
+.col-8 {
+  float: left;
+  display: inline;
+  width: 660px; }
+
+.col-9 {
+  float: left;
+  display: inline;
+  width: 745px; }
+
+.col-10 {
+  float: left;
+  display: inline;
+  width: 830px; }
+
+.col-11 {
+  float: left;
+  display: inline;
+  width: 915px; }
+
+.col-12 {
+  float: left;
+  display: inline;
+  width: 1000px; }
+
+body {
+  margin: 0; }
+
+.wrapper {
+  *zoom: 1;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #666; }
+  .wrapper:before, .wrapper:after {
+    content: "";
+    display: table; }
+  .wrapper:after {
+    clear: both; }
+  .wrapper > .row {
+    position: relative;
+    *zoom: 1; }
+    .wrapper > .row:before, .wrapper > .row:after {
+      content: "";
+      display: table; }
+    .wrapper > .row:after {
+      clear: both; }
+  .wrapper > .row [class*="col-"]:last-child {
+    margin-right: 0px;
+    float: right; }
+
+/*# sourceMappingURL=style.css.map */
