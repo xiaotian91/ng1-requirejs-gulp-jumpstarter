@@ -17,7 +17,7 @@ var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var gzip = require('gulp-gzip');
 var del = require('del');
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var base64 = require('gulp-base64');
 var base64html = require('gulp-img64');
 var filter = require('gulp-filter');
@@ -157,7 +157,7 @@ gulp.task('css', function() {
 gulp.task('clean', function() {
     del(config.cleanFiles, function(paths) {
         console.log('Deleted files and folders:\n', paths.join('\n'));
-    })
+    });
 });
 
 gulp.task('watch', function() {
@@ -178,7 +178,8 @@ gulp.task('watch', function() {
 });
 
 gulp.task('sass', function() {
-    return sass(config.sassFiles, {sourcemap: true})
+    return gulp.src(config.sassFiles)
+        .pipe(sass())
         .pipe(base64({
             maxImageSize: 0
         }))

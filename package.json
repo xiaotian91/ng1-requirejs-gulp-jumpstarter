@@ -31,6 +31,7 @@
     "gulp-rev": "^8.0.0",
     "gulp-rev-collector": "^1.1.1",
     "gulp-ruby-sass": "^3.0.0",
+    "gulp-sass": "^3.1.0",
     "minimist": "^1.2.0",
     "requirejs": "^2.1.22",
     "run-sequence": "^2.2.1"

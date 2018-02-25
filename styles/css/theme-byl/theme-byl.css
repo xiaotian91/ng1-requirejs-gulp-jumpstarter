@@ -2,10 +2,10 @@
 /* 主变量 */
 /* 霍尼韦尔覆盖override */
 /* 所有模块 */
-.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > :first-child, .xo-static-v-menu > li > :nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
+.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > *:first-child, .xo-static-v-menu > li > *:nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
 .xo-comment-lg .xo-comment-item .xo-img, .xo-comment-sm .xo-comment-item .xo-img img.avatar,
 .xo-comment-lg .xo-comment-item .xo-img img.avatar, .xo-comment-sm .xo-comment-item .xo-panel,
-.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > :first-child, .xo-orgShell-footer > :nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :nth-child(2) {
+.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > *:first-child, .xo-orgShell-footer > *:nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:nth-child(2) {
   display: inline-block;
   *display: inline;
   *zoom: 1; }
@@ -37,10 +37,10 @@
 .xo-col-1, .xo-col-2, .xo-col-3, .xo-col-4, .xo-col-5, .xo-col-6, .xo-col-7, .xo-col-8, .xo-col-9, .xo-col-10, .xo-col-11, .xo-col-12 {
   margin-right: 20px; }
 
-.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > :first-child, .xo-static-v-menu > li > :nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
+.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > *:first-child, .xo-static-v-menu > li > *:nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
 .xo-comment-lg .xo-comment-item .xo-img, .xo-comment-sm .xo-comment-item .xo-img img.avatar,
 .xo-comment-lg .xo-comment-item .xo-img img.avatar, .xo-comment-sm .xo-comment-item .xo-panel,
-.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > :first-child, .xo-orgShell-footer > :nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :nth-child(2) {
+.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > *:first-child, .xo-orgShell-footer > *:nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:nth-child(2) {
   display: inline-block;
   *display: inline;
   *zoom: 1; }
@@ -102,10 +102,10 @@
   .xo-orgShell-container > .xo-orgShell-body:after, .xo-orgShell-container .xo-orgShell-body > .xo-orgShell-body-sidebar-layout-lf .xo-orgShell-body-sidebar-layout-main > .xo-orgShell-body-sidebar-layout-main-inner:after, .xo-orgShell-container .xo-orgShell-body > .xo-orgShell-body-sidebar-layout-rt .xo-orgShell-body-sidebar-layout-main > .xo-orgShell-body-sidebar-layout-main-inner:after {
     clear: both; }
 
-.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > :first-child, .xo-static-v-menu > li > :nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
+.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > *:first-child, .xo-static-v-menu > li > *:nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
 .xo-comment-lg .xo-comment-item .xo-img, .xo-comment-sm .xo-comment-item .xo-img img.avatar,
 .xo-comment-lg .xo-comment-item .xo-img img.avatar, .xo-comment-sm .xo-comment-item .xo-panel,
-.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > :first-child, .xo-orgShell-footer > :nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :nth-child(2) {
+.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > *:first-child, .xo-orgShell-footer > *:nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:nth-child(2) {
   display: inline-block;
   *display: inline;
   *zoom: 1; }
@@ -812,12 +812,12 @@ body.xo-bg {
     overflow: hidden; }
   .xo-sudoku-wrapper .grid > * {
     float: left;
-    line-height: 93.3333333333px; }
+    line-height: 93.33333px; }
   .xo-sudoku-wrapper .grid > * > *, .xo-sudoku-wrapper .grid > * > *:visited {
     display: block;
     text-align: center;
-    width: 93.3333333333px;
-    height: 93.3333333333px;
+    width: 93.33333px;
+    height: 93.33333px;
     position: relative;
     z-index: 1; }
   .xo-sudoku-wrapper > .grid {
@@ -862,11 +862,13 @@ body.xo-bg {
     line-height: 50px;
     font-size: 18px;
     cursor: pointer; }
+
 .xo-fixed-tabpanel.xo-fixed-tabpanel-2cols > div {
   width: 100%;
   height: 450px;
   display: none;
   margin-top: -1px; }
+
 .xo-fixed-tabpanel.xo-fixed-tabpanel-2cols > div.on {
   display: block; }
 
@@ -877,18 +879,20 @@ body.xo-bg {
   .xo-fixed-tabpanel.xo-fixed-tabpanel-3cols > ul > li {
     float: left;
     display: inline;
-    width: 33.3333333333%;
+    width: 33.33333%;
     height: 50px;
     list-style: none;
     text-align: center;
     line-height: 50px;
     font-size: 18px;
     cursor: pointer; }
+
 .xo-fixed-tabpanel.xo-fixed-tabpanel-3cols > div {
   width: 100%;
   height: 450px;
   display: none;
   margin-top: -1px; }
+
 .xo-fixed-tabpanel.xo-fixed-tabpanel-3cols > div.on {
   display: block; }
 
@@ -908,10 +912,10 @@ body.xo-bg {
   .xo-orgShell-container > .xo-orgShell-body:after, .xo-orgShell-container .xo-orgShell-body > .xo-orgShell-body-sidebar-layout-lf .xo-orgShell-body-sidebar-layout-main > .xo-orgShell-body-sidebar-layout-main-inner:after, .xo-orgShell-container .xo-orgShell-body > .xo-orgShell-body-sidebar-layout-rt .xo-orgShell-body-sidebar-layout-main > .xo-orgShell-body-sidebar-layout-main-inner:after {
     clear: both; }
 
-.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > :first-child, .xo-static-v-menu > li > :nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
+.xo-inline-block, .xo-btn, .xo-btn-sm, .xo-btn-lg, .xo-round-title > *, .xo-dropdown-menu-container, .xo-static-v-menu > li > *:first-child, .xo-static-v-menu > li > *:nth-child(2), .xo-center-block-container > .xo-center-block-item, .xo-comment-sm .xo-comment-item .xo-img,
 .xo-comment-lg .xo-comment-item .xo-img, .xo-comment-sm .xo-comment-item .xo-img img.avatar,
 .xo-comment-lg .xo-comment-item .xo-img img.avatar, .xo-comment-sm .xo-comment-item .xo-panel,
-.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > :first-child, .xo-orgShell-footer > :nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > :nth-child(2) {
+.xo-comment-lg .xo-comment-item .xo-panel, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-rt > div, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img, .xo-orgShell-container .xo-orgShell-header .xo-orgShell-header-lf img + *, .xo-orgShell-footer > *:first-child, .xo-orgShell-footer > *:nth-child(2), .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:first-child, .xo-info-display-box > .xo-info-display-box-content .xo-info-display-box-content-subinfo > *:nth-child(2) {
   display: inline-block;
   *display: inline;
   *zoom: 1; }
@@ -949,11 +953,11 @@ body.xo-bg {
       float: right;
       padding-right: 35px; }
   .xo-orgShell-container > .xo-orgShell-body {
-    margin-top: 83.3333333333px; }
+    margin-top: 83.33333px; }
   .xo-orgShell-container > .xo-orgShell-header-subhead {
     position: fixed;
     top: 50px;
-    height: 33.3333333333px;
+    height: 33.33333px;
     background: #27ae61 !important; }
   .xo-orgShell-container .xo-orgShell-body-inner {
     position: relative;
@@ -972,8 +976,7 @@ body.xo-bg {
     margin-right: auto;
     margin-left: auto;
     overflow: hidden; }
-    .xo-orgShell-container .xo-orgShell-header-subhead > div ul,
-    .xo-orgShell-container .xo-orgShell-header-subhead > div ol {
+    .xo-orgShell-container .xo-orgShell-header-subhead > div ul, .xo-orgShell-container .xo-orgShell-header-subhead > div ol {
       list-style: none;
       padding: 0; }
     .xo-orgShell-container .xo-orgShell-header-subhead > div ul,
@@ -986,9 +989,9 @@ body.xo-bg {
         margin-left: 0; }
     .xo-orgShell-container .xo-orgShell-header-subhead > div > ul > li {
       width: 185px;
-      height: 33.3333333333px;
+      height: 33.33333px;
       border-left: 1px solid #ffffff;
-      line-height: 33.3333333333px;
+      line-height: 33.33333px;
       text-align: center;
       color: #ffffff; }
       .xo-orgShell-container .xo-orgShell-header-subhead > div > ul > li:last-child {
@@ -1102,26 +1105,33 @@ body.xo-bg {
   right: 0;
   line-height: 25px;
   text-align: center; }
+
 .xo-info-display-box > .xo-info-display-box-img img {
   -webkit-filter: grayscale(30%);
   -moz-filter: grayscale(30%);
   filter: grayscale(30%);
   -webkit-transition: transform, 0.3s;
   transition: transform, 0.3s; }
+
 .xo-info-display-box > .xo-info-display-box-img:hover img {
   -webkit-transform: scale(1.4);
   transform: scale(1.4);
   -webkit-filter: grayscale(0);
   -moz-filter: grayscale(0);
   filter: grayscale(0); }
+
 .xo-info-display-box > .xo-info-display-box-img .xo-info-display-box-img-badge-skyblue {
   background-color: #68c8f5; }
+
 .xo-info-display-box > .xo-info-display-box-img .xo-info-display-box-img-badge-pink {
   background-color: #e47786; }
+
 .xo-info-display-box > .xo-info-display-box-img .xo-info-display-box-img-badge-orange {
   background-color: #fdb032; }
+
 .xo-info-display-box > .xo-info-display-box-img .xo-info-display-box-img-badge-green {
   background-color: #27ae61; }
+
 .xo-info-display-box > .xo-info-display-box-content {
   position: relative;
   padding: 0 20px; }
@@ -1183,7 +1193,7 @@ body.xo-bg {
 .xo-orgShell-body-sidebar-layout-main-inner > .xo-common-main-section-content {
   height: 260px; }
   .xo-orgShell-body-sidebar-layout-main-inner > .xo-common-main-section-content > .xo-common-main-section-content-item {
-    width: 278.3333333333px;
+    width: 278.33333px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1202,7 +1212,7 @@ body.xo-bg {
   height: 100%; }
   .xo-login-container .xo-login-box {
     width: 1000px;
-    height: 380.0967519005px;
+    height: 380.09675px;
     border: 0px;
     background: #ffffff;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
@@ -1213,7 +1223,7 @@ body.xo-bg {
     .xo-login-container .xo-login-box .xo-login-box-banner img {
       display: block;
       width: 550px;
-      height: 380.0967519005px; }
+      height: 380.09675px; }
     .xo-login-container .xo-login-box .xo-login-box-form {
       width: 450px;
       -webkit-box-sizing: border-box;
@@ -1290,5 +1300,3 @@ input[type="color"], .uneditable-input, select {
 .pagination > .active > span:focus {
   background: #1dafd1 !important;
   color: #ffffff !important; }
-
-

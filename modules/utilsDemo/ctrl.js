@@ -25,8 +25,9 @@ define(['./app'],function(app){
         $scope.convert2UrlFromSuffix = function(str) {
             return xoStrings.convert2UrlFromSuffix(str, 'png');
         };
+
     }]);
 
-    app.controller('utilsDemoDatesCtrl', ['$scope', 'xoStrings', function($scope, xoStrings) {
+    app.controller('utilsDemoDatesCtrl', ['$scope', 'xoDates', function($scope, xoDates) {
     }]);
 });

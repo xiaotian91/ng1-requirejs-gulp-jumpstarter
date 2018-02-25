@@ -1,8 +1,20 @@
-<div class="container">
-    <ul>
-        <li ng-repeat="i in menus">
-            <a ui-sref="{{i.url}}">{{i.name}}</a>
-        </li>
-    </ul>
-    <div ui-view></div>
+<div class="xo-orgShell-container">
+	<div class="xo-orgShell-body">
+		<div class="xo-orgShell-body-sidebar-layout-lf">
+		
+			<div class="xo-orgShell-body-sidebar-layout-menu">
+			    <ul>
+			        <li ng-repeat="i in menus">
+			            <a ui-sref="{{i.url}}">{{i.name}}</a>
+			        </li>
+			    </ul>
+			</div>
+
+			<div class="xo-orgShell-body-sidebar-layout-main">
+
+	    		<div ui-view></div>
+			</div>
+
+		</div>
+	</div>
 </div>
