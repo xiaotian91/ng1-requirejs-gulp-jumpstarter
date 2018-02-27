@@ -10,6 +10,7 @@
   var app = angular.module('xo.directives', [])
     .directive('onFinishRender', onFinishRenderCtrl)
     .directive('mouseOverLeave', mouseOverLeaveCtrl)
+    .directive('expander', expanderCtrl)
     .directive('xoInputCurrency', xoInputCurrencyCtrl)
     .directive('xoInput', xoInputCtrl);
 
@@ -47,6 +48,28 @@
       }
     };
   }
+
+    function expanderCtrl() {
+        return {
+            restrict: 'EA',
+            scope: {
+                target: "=",
+                icon: '=',
+                isExpand: '='
+            },
+            link: function(scope, elem, attr) {
+                elem.css("cursor", "pointer");
+                scope.target = (scope.isExpand)?true:false;
+                scope.icon = (scope.isExpand)?'-':'+';
+                elem.bind('click', function(){
+                    scope.$apply(function(){
+                        scope.target = !scope.target;
+                        scope.icon = scope.target?'-':'+';
+                    });
+                });
+            }
+        };
+    }
 
   function xoInputCurrencyCtrl($filter, $locale, $parse) {
         //#region helper methods
