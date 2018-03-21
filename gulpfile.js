@@ -82,23 +82,23 @@ gulp.task('inject', function() {
     
     var sourcesIndex;
     if (options.env == 'production') {
-        sourcesIndex = gulp.src(config.deploySrc, {read: false});
+        sourcesIndex = gulp.src(config.deploySrc.css, {read: false});
     } else if (options.env == 'development') {
-        sourcesIndex = gulp.src(config.devSrc, {read: false});
+        sourcesIndex = gulp.src(config.devSrc.css, {read: false});
     }
     
     return gulp.src('./index.html')
         .pipe(inject(sourcesIndex, {starttag: '<!-- inject:index:{{ext}} -->', relative: true}))
         .pipe(gulpif(options.env == 'development', htmlreplace({
           replacejs: {
-            src: [['main.js', 'https://cdn.bootcss.com/require.js/2.3.5/require.min.js']],
+            src: [config.devSrc.js],
             tpl: '<script data-main="%s" src="%s"></script>'
           }
         })))
         .pipe(gulpif(options.env == 'development', rename('index-dev.html')))
         .pipe(gulpif(options.env == 'production', htmlreplace({
           replacejs: {
-            src: [['app.min.js', 'https://cdn.bootcss.com/require.js/2.3.5/require.min.js']],
+            src: [config.deploySrc.js],
             tpl: '<script data-main="%s" src="%s"></script>'
           }
         })))
@@ -148,7 +148,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    return gulp.src(config.deploySrc, {base: './styles'})
+    return gulp.src(config.deploySrc.css, {base: './styles'})
         .pipe(cssimport())
         .pipe(cleancss({compatibility: 'ie8'}))
         .pipe(gulp.dest('dist/styles'));
