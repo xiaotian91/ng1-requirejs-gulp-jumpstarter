@@ -17,32 +17,11 @@
 
 3. `/plugins`放置第三方插件，主要是一些非官方的插件
 
-
-## 开始
-
-node, npm, gulp 是必须要安装的
-
-		npm install
-		bower install
-		
-		npm run dev //开发环境
-		npm run build //打包
-		npm run clean //清理
-		
-## 主要技术栈
-
-- RequireJS(AMD模块加载器)
-- AngularJS(前端MVC框架)
-- jQuery(DOM操作)
-- lodash(函数式编程加强)
-- sass + bootstrap 3(样式)
-- Browsersync ＋ Mock（前后端分离开发, 模拟后台接口）
-
-
 ## 环境搭建
 
-
 ###### 安装node环境与npm管理工具
+
+node, npm, gulp 是必须要安装的
 
 **基本安装**
 
@@ -64,6 +43,22 @@ node, npm, gulp 是必须要安装的
 
 + **坑三:** npm下标不停的闪 删除C:\Users\Administrator\下的npmrc文件
 
+## 开始
+		npm install
+		bower install
+		
+		npm run dev //开发环境
+		npm run build //打包
+		npm run clean //清理
+		
+## 主要技术栈
+
+- RequireJS(AMD模块加载器)
+- AngularJS(前端MVC框架)
+- jQuery(DOM操作)
+- lodash(函数式编程加强)
+- sass + bootstrap 3(样式)
+- Browsersync ＋ Mock（前后端分离开发, 模拟后台接口）
 
 ## 样式
 ---
@@ -88,28 +83,29 @@ node, npm, gulp 是必须要安装的
 		}
 		
 
-**结构:**
+## 打包
 
-采用**一个模块/页面对应一个scss**，如：_login.scss, 再加一个项目用的变量文件定义字体、颜色（覆盖sass-core中的设置).
+`npm run build`  这一步会自动生成一个dist文件夹作为最终部署发布的版本.
 
-## JS打包
+    - dist
+        - index.html
+        - styles
+            - css
+                - themes(皮肤css)
+                - 其他css
+        - app.js // 未压缩js
+        - app.min.js // 压缩js
+        - app.js.gz // gzip
+        - app.min.js.gz
 
-采用gulp + r.js
+notes: 在`build`之前如果先使用过`npm run dev`建立过开发环境，那么请先用 `npm run clean`之后在用`npm run build`.
+ 
+## 补丁与小Tips
 
-命令行 `npm run build`
-
-这一步会自动生成一个dist文件夹作为最终部署发布的版本
+请用patch里的模块替换掉node_modules里相同的模块的index.js
 
 [采坑大全](http://www.jb51.net/article/77771.htm)
 
 Linux 删除文件夹下的 .DS_Store find ./ -name "*.DS_Store" -print -exec rm -fr {} \;
-
-## 补丁
-
-
-请用patch里的模块替换掉node_modules里相同的模块的index.js
-
-##BUG
----
 
 Windows环境下可能会遇到权限问题，需要给cmd.exe‘Run As Adminitrator’
