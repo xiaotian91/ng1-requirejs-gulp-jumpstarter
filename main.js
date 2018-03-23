@@ -5,6 +5,7 @@ require.config({
     paths: {
         'ui-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
         'angular-animate':'bower_components/angular-animate/angular-animate.min',
+        'angular-smart-table': 'bower_components/angular-smart-table/dist/smart-table.min',
         'routeConfig':'components/routeConfig',
 
         'jquery': 'node_modules/jquery/dist/jquery',
@@ -29,6 +30,7 @@ require([ // 加载所有模块的入口文件
     'modules/utilsDemo/main',
     'modules/inputsDemo/main',
     'modules/dataService/main',
+    'modules/stDemo/main',
     'template',
     'config'
 ],function(){
@@ -38,12 +40,22 @@ require([ // 加载所有模块的入口文件
         "myApp.utilsDemo",
         "myApp.inputsDemo",
         "myApp.dataService",
+        "myApp.stDemo",
         "template-app",
         "myApp.config"
-    ]).run(['$rootScope', '$apiPath', function($rootScope, $apiPath) {
-        // 定义一些root级别的公用方法, 共享登录状态等
+    ]).run(['$rootScope', '$apiPath', '$state', '$transitions', function($rootScope, $apiPath, $state, $transitions) {
+        // 定义一些root级别的公用方法, 共享登录状态, 返回上一页等
         $rootScope.loggedIn = true; // fake loggedIn
-        $rootScope.$apiPath = $apiPath;
+        $rootScope.$apiPath = $apiPath; // 后台资源url地址
+        var previousState;
+        var previousStateParameters;
+        $transitions.onSuccess({}, function (transition) {
+            previousState = transition.from().name;
+            previousStateParameters = transition.params('from');
+        });
+        $rootScope.back = function (options) {
+            $state.go(previousState, previousStateParameters, options);
+        }
     }]);
     angular.bootstrap(document,['myApp']); // 启动项目
 });

@@ -17,7 +17,7 @@
     var app = angular.module('xo.confirm', [])
         .factory('$xoConfirm', xoConfirmController);
 
-    function xoConfirmController($uibModal){
+    function xoConfirmController($uibModal, $sce){
         return{
             open:function(opts, callback){
                 var modalInstance = $uibModal.open({
@@ -25,6 +25,7 @@
                     templateUrl: 'uib-modal/view.html',
                     controller: function($scope, $uibModalInstance) {
                         $scope.o = opts;
+                        $scope.o.content = $sce.trustAsHtml($scope.o.content);
                         $scope.ok = function () {
                             $uibModalInstance.close();
                         };

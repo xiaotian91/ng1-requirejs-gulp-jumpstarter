@@ -1,8 +1,13 @@
 <div class="modal-header">
-    <h3 class="modal-title">{{o.title}}</h3>
+    <h3 class="modal-title">增加一个新员工</h3>
 </div>
 <div class="modal-body">
-    <div ng-bind-html="o.content"></div>
+    <ul>
+        <li ng-repeat="item in items">
+            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">确定</button>

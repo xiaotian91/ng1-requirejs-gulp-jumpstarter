@@ -4,6 +4,9 @@ define(['./app'], function(app) {
             name: '亲爱的用户',
             email: 'user@user.com'
         };
+        $scope.testParams = {
+            id: JSON.stringify({})
+        };
         $scope.openT = function() {
             $xoConfirm.open({
                 title: '确认框',
