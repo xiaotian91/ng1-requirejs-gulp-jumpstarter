@@ -1,8 +1,15 @@
-
 'use strict'
-;(function(_) {
+;(function( root, module_name, factory ) {
+    if (typeof define === 'function' && define.amd) { // Angular-based AMD Support
+        define(['lodash'], factory);
+    } else { // Browser Support
+        if (!root[module_name]) {
+            root[module_name] = factory(root, _);
+        }
+    }
+}(this, 'xoTableselect', function(_) {
 
-    angular.module('customCheckbox', []).directive('xoCheckboxes', checkBoxController);
+    angular.module('xo.tableSelect', []).directive('xoTableselect', checkBoxController);
 
     function checkBoxController($parse, $timeout) {
 
@@ -90,4 +97,4 @@
         }
     }
 
-})(_);
+}));

@@ -5,7 +5,8 @@ define(
         "angular-animate",
         "./xo-utils/src/ng-index",
         "./angular-datetimepicker/index",
-        "./uib-modal/index"
+        "./uib-modal/index",
+        "./angular-table-select/index"
     ], function () {
         return angular.module('myApp.commonComponents', [
             'ui.bootstrap',
@@ -13,7 +14,8 @@ define(
             'xo.utils',
             'custom.datetimepicker',
             'xo.confirm',
-            'ui.router',
+            'xo.tableSelect',
+            'ui.router'
         ])
     });
 

@@ -5,7 +5,6 @@ require.config({
     paths: {
         'ui-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
         'angular-animate':'bower_components/angular-animate/angular-animate.min',
-        'angular-smart-table': 'bower_components/angular-smart-table/dist/smart-table.min',
         'routeConfig':'components/routeConfig',
 
         'jquery': 'node_modules/jquery/dist/jquery',

@@ -17,3 +17,8 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0); 
 }
+
+.st-selected{
+    background: #216eff !important;
+    color: white !important;
+}

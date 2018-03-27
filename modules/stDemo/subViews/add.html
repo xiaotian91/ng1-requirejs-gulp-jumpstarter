@@ -2,12 +2,8 @@
     <h3 class="modal-title">增加一个新员工</h3>
 </div>
 <div class="modal-body">
-    <ul>
-        <li ng-repeat="item in items">
-            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-        </li>
-    </ul>
-    Selected: <b>{{ selected.item }}</b>
+    姓名 <input type="text" ng-model="person.name">
+    Output: <b>{{ person }}</b>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">确定</button>
