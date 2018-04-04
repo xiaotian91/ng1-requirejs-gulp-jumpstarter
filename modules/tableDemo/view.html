@@ -1,0 +1,25 @@
+<div>
+    <button type="button" ng-click="back({ reload: true })">back</button>
+    <button type="button" ng-click="openT()" class="btn btn-sm btn-success">
+        <i class="glyphicon glyphicon-plus">
+        </i> 增加一个员工
+    </button>
+
+    <button ng-click="confirm()">Confirm</button>
+
+    <script type="text/ng-template" id="myModalAdd.html">
+        <div ng-include="'tableDemo/subViews/add.html'"></div>
+    </script>
+
+    <script type="text/ng-template" id="tableUrl.html">
+        <div ng-include="'tableDemo/subViews/table.html'"></div>
+    </script>
+
+    <script type="text/ng-template" id="pagination.html">
+        <div ng-include="'tableDemo/subViews/pagination.html'"></div>
+    </script>
+
+    <xo-tableselect items="list" selected-items="selectedList" for-selected-key="'student_id'" template-url="tableUrl.html" for-funcs="['del']"></xo-tableselect>
+    <xo-pagination conf="paging" template-url="pagination.html"></xo-pagination>
+</div>
+

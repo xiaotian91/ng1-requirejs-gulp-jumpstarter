@@ -15,9 +15,11 @@ exports.data = function() {
 					Random.string('lower', 4);
 					var data = Mock.mock({
 						"route": "/employees/getAll",
-						"list|10": [{
+						"totalCounts": '10',
+						"list|5": [{
 							'name': '@string()',
-							'id': '@integer(0,10)'
+							'id': '@integer(0,10)',
+							'student_id': '@integer(0,12)'
 						}]
 					});
 					res.write(JSON.stringify(data));

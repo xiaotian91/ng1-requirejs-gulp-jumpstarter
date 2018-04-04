@@ -1,18 +1,29 @@
 'use strict'
-;(function() {
-    angular.module('customPagination', []).directive('pagination', paginationController);
+;(function( root, module_name, factory ) {
+    if (typeof define === 'function' && define.amd) { // Angular-based AMD Support
+        define(['lodash'], factory);
+    } else { // Browser Support
+        if (!root[module_name]) {
+            root[module_name] = factory(root, _);
+        }
+    }
+}(this, 'xoPagination', function(_) {
+    angular.module('xo.pagination', []).directive('xoPagination', paginationController);
 
     function paginationController() {
 
         return {
             restrict: 'EA',
-            templateUrl: 'pagination/pagination.html',
+            //templateUrl: 'pagination/pagination.html',
+            template: '<div ng-include="getTemplate()"></div>',
             replace: true,
             scope: {
                 conf: '='
             },
             link: function(scope, element, attrs) {
-
+                scope.getTemplate= function() {
+                    return attrs.templateUrl
+                };
                 var conf = scope.conf;
 
                 // 默认分页长度
@@ -192,7 +203,6 @@
 
                 // 修改每页展示的条数
                 scope.changeItemsPerPage = function() {
-
                     // 一发展示条数变更，当前页将重置为1
                     conf.currentPage = 1;
 
@@ -249,5 +259,4 @@
             }
         };
     }
-
-})();
+}));

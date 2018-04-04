@@ -6,6 +6,7 @@ define(
         "./xo-utils/src/ng-index",
         "./angular-datetimepicker/index",
         "./uib-modal/index",
+        "./pagination/index",
         "./angular-table-select/index"
     ], function () {
         return angular.module('myApp.commonComponents', [
@@ -15,6 +16,7 @@ define(
             'custom.datetimepicker',
             'xo.confirm',
             'xo.tableSelect',
+            'xo.pagination',
             'ui.router'
         ])
     });

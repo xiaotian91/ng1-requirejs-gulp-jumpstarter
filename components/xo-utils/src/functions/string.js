@@ -38,8 +38,8 @@
             separator = separator || '|';
             var regx = /[\[, \(]+(.*?)[\], \)]+/g;
             var arr = str.match(regx);
-            let result = '';
-            for (let i = 0; i < arr.length; i++) {
+            var result = '';
+            for (var i = 0; i < arr.length; i++) {
                 if (/[\[, \(][\], \)]/.test(arr[i])) {
                     result += 'undefined' + separator;
                 } else {
@@ -57,7 +57,7 @@
          * @returns {String} Returns `string`
          */
         factory.convert2UrlFromSuffix = function(url, suffix = 'jpg') {
-            let _inputSuffix = url.match(/([a-z0-9\-]+).([a-z\.]+[a-z])$/gi)[0].match(/.([a-z0-9\-]+)$/gi)[0];
+            var _inputSuffix = url.match(/([a-z0-9\-]+).([a-z\.]+[a-z])$/gi)[0].match(/.([a-z0-9\-]+)$/gi)[0];
             if (String(suffix) && !!/^.([a-z0-9\-]+)/gi.test(suffix)) {
                 suffix = '.' + suffix;
             }

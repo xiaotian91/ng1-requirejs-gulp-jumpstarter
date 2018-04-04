@@ -1,13 +1,13 @@
 'use strict'
 ;(function( root, module_name, factory ) {
     if (typeof define === 'function' && define.amd) { // Angular-based AMD Support
-        define(['lodash'], factory);
+        define(['jquery', 'lodash'], factory);
     } else { // Browser Support
         if (!root[module_name]) {
-            root[module_name] = factory(root, _);
+            root[module_name] = factory(root, $, _);
         }
     }
-}(this, 'xoTableselect', function(_) {
+}(this, 'xoTableselect', function($,_) {
 
     angular.module('xo.tableSelect', []).directive('xoTableselect', checkBoxController);
 
@@ -24,12 +24,12 @@
                 srcUrl: '='
             },
             /*templateUrl: function(elem, attrs) {
-                if (!attrs.templateUrl) {
-                    console.log('template is not given! please assign a template-url to the directive');
-                    return false;
-                }
-                return attrs.templateUrl;
-            },*/
+             if (!attrs.templateUrl) {
+             console.log('template is not given! please assign a template-url to the directive');
+             return false;
+             }
+             return attrs.templateUrl;
+             },*/
             template: '<div ng-include="getTemplate()"></div>',
             link: function(scope, elem, attrs) {
                 scope.selectAll = false;
@@ -68,18 +68,32 @@
                             scope.selectAll = false;
                         }
                     }
-                    if (action === 'remove' && _.includes(scope.selectedItems.val, val)) {
+                    if (action === 'remove') {
                         var rem = _.remove(scope.selectedItems.val, function(item) {
-                                return item[scope.selectedKey] === val[scope.selectedKey];
-                            });
-                            //var idx = scope.selectedItems.indexOf(val);
-                            //scope.selectedItems.splice(idx, 1);
+                            return item[scope.selectedKey] === val[scope.selectedKey];
+                        });
                         scope.selectAll = false;
                     }
                 }
 
                 scope.updateSelection = function($event, val) {
                     var checkbox = $event.target;
+                    var action = (checkbox.checked) ? 'add' : 'remove';
+                    updateSelected(action, val);
+                    $event.stopPropagation();
+                };
+
+                scope.selectRow = function($event, val) { // 单击tr选中行
+                    var tagName = $event.target.parentNode.nodeName.toLowerCase();
+                    var $elem;
+                    if (tagName == 'tr') {
+                        $elem = $($event.target.parentNode);
+                    } else {
+                        $elem = $($event.target.parentNode.parentNode);
+                    }
+                    var checkbox = $elem.find('input').get(0);
+                    checkbox.checked = !checkbox.checked;
+                    val.state = !val.state;
                     var action = (checkbox.checked) ? 'add' : 'remove';
                     updateSelected(action, val);
                 };
@@ -90,9 +104,8 @@
 
                 scope.isSelectedAll = function () {
                     if (!scope.items) return;
-                    return (scope.selectedItems.val.length === scope.items.length) && (scope.selectedItems.val.length); // 保证数组不为空
+                    return (scope.selectedItems.val.length === scope.items.length) && (!!scope.selectedItems.val.length); // 保证数组不为空
                 };
-
             }
         }
     }

@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="oa-thead">
+        <tr>
+            <th style="width: 25px;">
+                <!--label ng-class="{isSelected: selectAll}">
+                    <input id="selectAll" type="checkbox" ng-model="selectAll" ng-click="all(selectAll)" ng-checked="isSelectedAll()">
+                </label-->
+            </th>
+            <th>姓名</th>
+            <th>编号</th>
+            <th>Student Id</th>
+        </tr>
+        </thead>
+        <tbody class="oa-tbody">
+        <tr ng-repeat="g in items" ng-class="{'st-selected': g.state}" ng-click="selectRow($event, g)">
+            <td style="width: 25px;">
+                <label ng-class="{isSelected: g.state}">
+                    <input type="checkbox" ng-model="g.state" ng-checked="g.state" ng-click="updateSelection($event,g)">
+                </label>
+            </td>
+            <td>
+                <a ng-bind="g.name"></a>
+            </td>
+            <td>{{g.id}}</td>
+            <td>{{g.student_id}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -29,7 +29,7 @@ require([ // 加载所有模块的入口文件
     'modules/utilsDemo/main',
     'modules/inputsDemo/main',
     'modules/dataService/main',
-    'modules/stDemo/main',
+    'modules/tableDemo/main',
     'template',
     'config'
 ],function(){
@@ -39,7 +39,7 @@ require([ // 加载所有模块的入口文件
         "myApp.utilsDemo",
         "myApp.inputsDemo",
         "myApp.dataService",
-        "myApp.stDemo",
+        "myApp.tableDemo",
         "template-app",
         "myApp.config"
     ]).run(['$rootScope', '$apiPath', '$state', '$transitions', function($rootScope, $apiPath, $state, $transitions) {

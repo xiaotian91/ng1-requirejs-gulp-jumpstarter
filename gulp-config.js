@@ -4,7 +4,8 @@ module.exports = (function() {
 			css: [ // 开发时插入的css文件
 			'./plugins/**/*.css',
 			'./styles/css/theme-byl/theme-byl.css',
-			'./components/angular-table-select/styles.css'
+			'./components/angular-table-select/styles.css',
+            './components/pagination/styles.css'
 			//'./components/**/*.css'
 			],
 			js: ['main.js', 'https://cdn.bootcss.com/require.js/2.3.5/require.min.js']
