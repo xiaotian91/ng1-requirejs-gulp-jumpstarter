@@ -6,6 +6,7 @@ define(
         "./xo-utils/src/ng-index",
         "./angular-datetimepicker/index",
         "./uib-modal/index",
+        "./angular-smart-table-plugins/index",
         "./pagination/index",
         "./angular-table-select/index"
     ], function () {
@@ -16,6 +17,7 @@ define(
             'custom.datetimepicker',
             'xo.confirm',
             'xo.tableSelect',
+            'st.pagination-plugins',
             'xo.pagination',
             'ui.router'
         ])

@@ -26,7 +26,7 @@ module.exports = (function() {
 			'components/*.js',
 			'components/**/*.html'
 		],
-		cleanFiles: ['tmp', 'dist', 'rev', 'styles/css', '.sass-cache', 'npm-debug.log'], // 清除文件
+		cleanFiles: ['tmp', 'dist', 'rev', 'styles/css', '.sass-cache', 'npm-debug.log', 'index-dev.html'], // 清除文件
 		sassFiles: ['./styles/themes/**/*.scss'] // 需要编译的sass/scss文件
 	};
 }());

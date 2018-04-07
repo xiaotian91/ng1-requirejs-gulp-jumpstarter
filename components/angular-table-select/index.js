@@ -9,7 +9,59 @@
     }
 }(this, 'xoTableselect', function($,_) {
 
-    angular.module('xo.tableSelect', []).directive('xoTableselect', checkBoxController);
+    angular.module('xo.tableSelect', [])
+        .directive('xoTableselect', checkBoxController)
+        .directive('rowSelectable', function($parse) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+                    var row = $parse(attrs.rowSelectable)(scope);
+                    element.on('click', function($event) {
+                        if ($event.target.nodeName.toLowerCase()!='input') {  
+                            var checkbox = $(element).find('input').get(0);
+                            checkbox.checked = !checkbox.checked;
+                        }
+                    });
+                }
+            }
+        })
+        .directive('rowChecklistModel', function($parse) {
+            return {
+                restrict: 'EA',
+                scope: {
+                    rowChecklistModel: "=",
+                    rowChecklistValue: "="
+                },
+                require: '^?xoCheckall',
+                link: function(scope, element, attrs, xoCheckAllController) {
+                    var arr = scope.rowChecklistModel;
+                    var row = scope.rowChecklistValue;
+                    element.on('click', function($event) {
+                        var $element = $(element);
+                        var _isSelected = isSelected($element);
+                        if (_isSelected) {
+                            arr.push(row);
+                        } else {
+                            arr.splice(arr.indexOf(row), 1);
+                        }
+                    });
+
+                    function isSelected($element) {
+                        var _isSelected = $element.hasClass('st-selected');
+                        if (!_isSelected) { 
+                            $element.addClass('st-selected');
+                        } else {    
+                            if (_isSelected) {
+                               $element.removeClass('st-selected');
+                            } else {
+                               $element.addClass('st-selected');
+                            }
+                        }
+                        return $element.hasClass('st-selected');
+                    }
+                }
+            }
+        });
 
     function checkBoxController($parse, $timeout) {
 

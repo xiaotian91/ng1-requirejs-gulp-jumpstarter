@@ -13,6 +13,8 @@ require.config({
         'jquery-datepick': 'plugins/jquery-datepick/jquery.datepick',
         'lodash': 'node_modules/lodash/lodash',
 
+        'angular-smart-table': 'bower_components/angular-smart-table/dist/smart-table.min',
+
         'template': 'tmp/template.tpl', // 所有的html模版
         'config': 'config' // 全局配置文件
     },
@@ -30,6 +32,7 @@ require([ // 加载所有模块的入口文件
     'modules/inputsDemo/main',
     'modules/dataService/main',
     'modules/tableDemo/main',
+    'modules/stDemo/main',
     'template',
     'config'
 ],function(){
@@ -40,6 +43,7 @@ require([ // 加载所有模块的入口文件
         "myApp.inputsDemo",
         "myApp.dataService",
         "myApp.tableDemo",
+        "myApp.stDemo",
         "template-app",
         "myApp.config"
     ]).run(['$rootScope', '$apiPath', '$state', '$transitions', function($rootScope, $apiPath, $state, $transitions) {
