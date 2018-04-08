@@ -11,7 +11,6 @@ define(['./app'], function(app) {
 		};
 
 		$scope.getData = function() {
-			$scope.selectedList = [];
 			$scope.isLoading = true;
 
 			SmartTableTestServ.getPage($scope.tableState).then(function(result) {

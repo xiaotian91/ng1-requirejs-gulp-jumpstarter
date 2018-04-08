@@ -118,7 +118,7 @@
               all: '=rowSelectAll',
               selected: '='
             },
-            link: function (scope, element, attr) {
+            link: function (scope, element, attr, ctrl) {
 
               scope.isAllSelected = false;
 
@@ -141,6 +141,9 @@
                 var s = newVal.length;
                 var a = scope.all.length;
 
+                console.log('selected: ' + s);
+                console.log('current: ' + a);
+
                 if ((s == a) && s > 0 && a > 0) {
 
                   $(element).find('input').get(0).checked = true;
@@ -154,6 +157,13 @@
                 }
 
               });
+
+              scope.$watch(function () { // 监听分页变化
+                return ctrl.tableState().pagination;
+                }, function(newVal) {
+                  console.log(scope.selected);
+                  console.log(scope.all);
+              }, true);
             }
           };
         }

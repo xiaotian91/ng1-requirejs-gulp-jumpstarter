@@ -56,7 +56,8 @@
          * @params {String} [suffix] The wanted suffix
          * @returns {String} Returns `string`
          */
-        factory.convert2UrlFromSuffix = function(url, suffix = 'jpg') {
+        factory.convert2UrlFromSuffix = function(url, suffix) {
+            suffix = (suffix)?suffix:'jpg';
             var _inputSuffix = url.match(/([a-z0-9\-]+).([a-z\.]+[a-z])$/gi)[0].match(/.([a-z0-9\-]+)$/gi)[0];
             if (String(suffix) && !!/^.([a-z0-9\-]+)/gi.test(suffix)) {
                 suffix = '.' + suffix;
