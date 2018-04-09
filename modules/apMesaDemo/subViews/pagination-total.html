@@ -1,0 +1,3 @@
+<div ng-if="stTotalCount>0" class="pull-left">
+	{{getFromItemIndex()}}-{{getToItemIndex()}}/{{stTotalCount}}条&nbsp;&nbsp;每页显示<select ng-model="stItemsByPage" ng-options="item for item in [10,25,50,100]" ng-change="displayLengthChange(stItemsByPage)"></select>条
+</div>

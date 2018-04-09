@@ -5,6 +5,8 @@ require.config({
     paths: {
         'ui-bootstrap' : 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
         'angular-animate':'bower_components/angular-animate/angular-animate.min',
+        'angular-sanitize': 'bower_components/angular-sanitize/angular-sanitize',
+        'angular-ui-sortable': 'bower_components/angular-ui-sortable/sortable',
         'routeConfig':'components/routeConfig',
 
         'jquery': 'node_modules/jquery/dist/jquery',
@@ -14,6 +16,7 @@ require.config({
         'lodash': 'node_modules/lodash/lodash',
 
         'angular-smart-table': 'bower_components/angular-smart-table/dist/smart-table.min',
+        'angularjs-table': 'bower_components/angularjs-table/dist/ap-mesa',
 
         'template': 'tmp/template.tpl', // 所有的html模版
         'config': 'config' // 全局配置文件
@@ -21,7 +24,8 @@ require.config({
     shim: { // 非AMD模块需要Shim
         "jquery-plugin": ['jquery'],
         "jquery-datetime-picker": ['jquery'],
-        "jquery-datepick": ['jquery-plugin']
+        "jquery-datepick": ['jquery-plugin'],
+        "angularjs-table": ['angular-sanitize', 'angular-ui-sortable']
     }
 });
 
@@ -33,6 +37,7 @@ require([ // 加载所有模块的入口文件
     'modules/dataService/main',
     'modules/tableDemo/main',
     'modules/stDemo/main',
+    "modules/apMesaDemo/main",
     'template',
     'config'
 ],function(){
@@ -44,6 +49,7 @@ require([ // 加载所有模块的入口文件
         "myApp.dataService",
         "myApp.tableDemo",
         "myApp.stDemo",
+        "myApp.apMesaDemo",
         "template-app",
         "myApp.config"
     ]).run(['$rootScope', '$apiPath', '$state', '$transitions', function($rootScope, $apiPath, $state, $transitions) {

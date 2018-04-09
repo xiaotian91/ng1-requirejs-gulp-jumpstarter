@@ -1,11 +1,16 @@
 module.exports = (function() {
 	return {
+		staticSrc: {
+			css: [],
+			js: []
+		},
 		devSrc: {
 			css: [ // 开发时插入的css文件
 			'./plugins/**/*.css',
 			'./styles/css/theme-byl/theme-byl.css',
 			'./components/angular-smart-table-plugins/styles.css',
-            './components/pagination/styles.css'
+            './components/pagination/styles.css',
+			'./bower_components/angularjs-table/dist/ap-mesa.css',
 			//'./components/**/*.css'
 			],
 			js: ['main.js', 'https://cdn.bootcss.com/require.js/2.3.5/require.min.js']
