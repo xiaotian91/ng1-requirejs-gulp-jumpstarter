@@ -16,13 +16,13 @@
             restrict: 'EA',
             //templateUrl: 'pagination/pagination.html',
             template: '<div ng-include="getTemplate()"></div>',
-            replace: true,
+            //replace: true,
             scope: {
                 conf: '='
             },
             link: function(scope, element, attrs) {
                 scope.getTemplate= function() {
-                    return attrs.templateUrl
+                    return attrs.templateUrl;
                 };
                 var conf = scope.conf;
 
@@ -214,8 +214,7 @@
                 };
 
                 // 跳转页
-                scope.jumpToPage = function() {
-                    var num = scope.jumpPageNum;
+                scope.jumpToPage = function(num) {
                     if (num.match(/\d+/)) {
                         num = parseInt(num, 10);
 
@@ -237,11 +236,11 @@
 
                 };
 
-                scope.jumpPageKeyUp = function(e) {
+                scope.jumpPageKeyUp = function(e, num) {
                     var keycode = window.event ? e.keyCode : e.which;
 
                     if (keycode == 13) {
-                        scope.jumpToPage();
+                        scope.jumpToPage(num);
                     }
                 }
 
